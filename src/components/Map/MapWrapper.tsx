@@ -1,4 +1,4 @@
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import { Wrapper } from '@googlemaps/react-wrapper';
 import MapComponent from './Map';
 import styled from 'styled-components';
 const Map = () => {

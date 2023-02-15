@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
 import styled from 'styled-components';
 import TextField from '@mui/material/TextField';
-import GoogleButton from 'react-google-button';
 import { SigninGoogle } from '../Login/SignInGoogle';
 export default function LoginModal() {
   return (
@@ -33,7 +32,7 @@ export default function LoginModal() {
             Login
           </Button>
 
-          <GoogleButton onClick={SigninGoogle} style={{ width: '200px' }} />
+          <SigninGoogle />
         </ButtonAreas>
       </StyledLogin>
     </>

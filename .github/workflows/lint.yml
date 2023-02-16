@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Package resolve
+      run: npm ci --legacy-peer-deps
     - name: Install packages
       run: npm ci
     - name: Lint

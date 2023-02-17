@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import styled from 'styled-components';
-import msg from '../../constants/mapConstants';
+import { msg } from '../../constants/mapConstants';
+import mapStyle from '../../styles/mapStyle.json';
 
 const MapComponent = () => {
   //미션 성공 여부 전역적으로 관리해야 함
@@ -40,6 +41,7 @@ const MapComponent = () => {
           center,
           zoom: 5,
           minZoom: 4,
+          styles: mapStyle,
         })
       );
     }

@@ -5,6 +5,11 @@ const msg = {
   loginsuccessBody: 'Login success!',
 };
 
-Object.freeze(msg);
+const user = {
+  userimgURL: 'imgURL',
+};
 
-export default msg;
+Object.freeze(msg);
+Object.freeze(user);
+
+export { user, msg };

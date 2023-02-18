@@ -11,11 +11,15 @@ const MapComponent = () => {
   const [map, setMap] = useState<google.maps.Map>();
   const [iscontain, setIsContain] = useState<boolean>(false);
   const [, setZoom] = useState<number>();
+  const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
+  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
 
   const center: google.maps.LatLngLiteral = {
     lat: 0,
     lng: 0,
   };
+
+  const [marker, setMarker] = useState<google.maps.Marker | null>(null);
 
   //맵을 눌렀을 떄
   const onclick = () => {
@@ -27,6 +31,7 @@ const MapComponent = () => {
     if (typeof map === 'undefined') {
       return;
     }
+
     if (map.getBounds()?.contains(temp) && !iscontain) {
       setIsContain(true);
       setZoom(map.getZoom());
@@ -45,14 +50,37 @@ const MapComponent = () => {
         })
       );
     }
-  }, [ref, map]);
+
+    if (map) {
+      google.maps.event.addListener(
+        map,
+        'click',
+        (e: google.maps.MapMouseEvent) => {
+          const pos = e.latLng?.toJSON();
+
+          if (pos) {
+            setPosition(pos);
+            if (marker) {
+              marker.setPosition(pos);
+            } else {
+              setMarker(new google.maps.Marker({ position: pos, map }));
+            }
+
+            if (marker !== null) {
+              setMarkers([marker, ...markers]);
+            }
+          }
+        }
+      );
+    }
+  }, [ref, map, marker]);
 
   return (
     <MapArea
       ref={ref}
       onClick={() => onclick()}
       onDoubleClick={() => onclick()}
-    />
+    ></MapArea>
   );
 };
 

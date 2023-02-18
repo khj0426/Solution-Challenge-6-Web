@@ -12,7 +12,7 @@ function MyAppBar() {
     return newStore.getState().persist.user.isLogin;
   };
   useEffect(() => {
-    setImg(sessionStorage.getItem(user.userimgURL));
+    setImg(localStorage.getItem(user.userimgURL));
   }, []);
 
   return (

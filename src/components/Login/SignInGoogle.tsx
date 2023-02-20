@@ -1,21 +1,22 @@
 import { auth } from '../../api/firebase';
 import 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import * as actions from '../Store/module/user';
+import { LOGINCHECK } from '../Store/module/user';
 import { useDispatch } from 'react-redux';
-import { Button } from '@mui/material';
 import swal from 'sweetalert';
 import { msg, user } from '../../constants/mapConstants';
 import { useRouter } from 'next/dist/client/router';
 import getAccessToken from '../../api/getAccessToken';
 import newStore from '../Store/module';
+import loginBtntheme from '../../styles/buttonTheme';
+import { ThemeProvider, Button } from '@mui/material';
 
 export const SigninGoogle = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
   //로그인 시 dispatch,페이로드로 이메일 전달
-  const login = (email: string) => dispatch(actions.LOGINCHECK(email));
+  const login = (email: string) => dispatch(LOGINCHECK(email));
 
   const handleLogin = async () => {
     if (newStore.getState().persist.user.email !== '') {
@@ -49,16 +50,16 @@ export const SigninGoogle = () => {
 
   return (
     <>
-      <Button
-        color="inherit"
-        style={{ fontWeight: '500', fontSize: '15px' }}
-        onClick={() => {
-          handleLogin();
-          router.replace('/');
-        }}
-      >
-        Login
-      </Button>
+      <ThemeProvider theme={loginBtntheme}>
+        <Button
+          variant="text"
+          color="inherit"
+          onClick={() => {
+            handleLogin();
+            router.replace('/');
+          }}
+        ></Button>
+      </ThemeProvider>
     </>
   );
 };

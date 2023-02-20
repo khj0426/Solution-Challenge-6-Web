@@ -12,7 +12,6 @@ const MapComponent = () => {
   const [iscontain, setIsContain] = useState<boolean>(false);
   const [, setZoom] = useState<number>();
   const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
-  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
 
   const center: google.maps.LatLngLiteral = {
     lat: 0,
@@ -64,10 +63,6 @@ const MapComponent = () => {
               marker.setPosition(pos);
             } else {
               setMarker(new google.maps.Marker({ position: pos, map }));
-            }
-
-            if (marker !== null) {
-              setMarkers([marker, ...markers]);
             }
           }
         }

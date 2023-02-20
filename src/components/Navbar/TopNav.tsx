@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
-import { SigninGoogle } from '../Login/SignInGoogle';
 import SignOutGoogle from '../Logout/SignoutGoogle';
 import { user } from '../../constants/mapConstants';
 import newStore from '../Store/module';
@@ -38,7 +37,6 @@ function MyAppBar() {
         >
           <Typography variant="h6">Bep</Typography>
           <div style={{ display: 'flex' }}>
-            <SigninGoogle />
             <SignOutGoogle />
             {img !== null && isLogin() ? <Avatar src={img} /> : null}
             <Typography>

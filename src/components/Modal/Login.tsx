@@ -1,74 +1,88 @@
-import { Button } from '@mui/material';
 import styled from 'styled-components';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Dialog,
+  DialogContent,
+  Button,
+} from '@mui/material';
+import newStore from '../Store/module';
 import { SigninGoogle } from '../Login/SignInGoogle';
+import { deactive } from '../Store/module/globalmodal';
+import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+
 export default function LoginModal() {
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState<boolean>(
+    newStore.getState().persist.globalModal.modal
+  );
+  const modalOff = () => {
+    dispatch(deactive());
+    setOpen(false); // update the state of the dialog
+  };
+
+  useEffect(() => {
+    setOpen(newStore.getState().persist.globalModal.modal);
+  }, []);
+
   return (
     <>
-      <StyledLogin>
-        <StyledHeader>Login</StyledHeader>
-        <StyledBody></StyledBody>
-        <ButtonAreas>
-          <Button
-            variant="contained"
-            style={{
-              width: '200px',
-              backgroundColor: 'rgb(66, 133, 244)',
-              color: '#fff',
-              fontWeight: '500',
-            }}
-          >
-            Login
-          </Button>
-          <SigninGoogle />
-        </ButtonAreas>
-      </StyledLogin>
+      <ModalPosition>
+        <Dialog
+          onClose={modalOff}
+          open={open}
+          PaperProps={{
+            style: {
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              border: '1px solid #AAAAAA',
+              borderRadius: '20px',
+            },
+          }}
+        >
+          <Button onClick={modalOff}>X</Button>
+          <DialogContent>
+            <Card
+              sx={{ maxWidth: 500 }}
+              style={{
+                width: '350px',
+                height: '380px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-evenly',
+                alignItems: 'center',
+              }}
+            >
+              <Typography variant="h3" component="div">
+                Bep
+              </Typography>
+              <CardMedia
+                sx={{ height: 200, width: 200 }}
+                image="/img/EarthImg.jpg"
+                title="EarthImg"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  Lets make a better planet together
+                </Typography>
+              </CardContent>
+              <SigninGoogle />
+            </Card>
+          </DialogContent>
+        </Dialog>
+      </ModalPosition>
     </>
   );
 }
 
-const StyledLogin = styled.form`
+const ModalPosition = styled.div`
   display: flex;
-  position: fixed;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 38%;
-  gap: 45px;
-  border-bottom: 1px solid #d1d1d1;
-  border-left: 1px solid #d1d1d1;
-  border-right: 1px solid #d1d1d1;
-  box-shadow: 0px 0.75px 0.75px 1.5px rgba(0, 0, 0, 0.2);
-  height: auto;
-  border-radius: 1%;
-  background-color: #fff;
-`;
-
-const StyledHeader = styled.section`
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  background: black;
-  font-weight: 600;
-  color: #fff;
-  font-size: 20px;
-  height: 50px;
-`;
-
-const StyledBody = styled.article`
-  width: 50%;
-  justify-content: center;
-  align-items: space-around;
-  display: flex;
-  gap: 15px;
-  flex-direction: column;
-`;
-
-const ButtonAreas = styled.section`
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5px;
+  height: 100%;
 `;

@@ -1,6 +1,7 @@
 import { Wrapper } from '@googlemaps/react-wrapper';
 import MapComponent from './Map';
 import styled from 'styled-components';
+import { memo } from 'react';
 
 const Map = () => {
   if (process.env.NEXT_PUBLIC_MAP_KEY)
@@ -33,4 +34,4 @@ const StyledMain = styled.main`
   width: 100%;
 `;
 
-export default Map;
+export default memo(Map);

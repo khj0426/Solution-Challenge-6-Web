@@ -8,7 +8,7 @@ import { msg, user } from '../../constants/mapConstants';
 import { useRouter } from 'next/dist/client/router';
 import getAccessToken from '../../api/getAccessToken';
 import newStore from '../Store/module';
-import loginBtntheme from '../../styles/buttonTheme';
+import loginBtntheme from '../../styles/LoginButton';
 import { ThemeProvider, Button } from '@mui/material';
 
 export const SigninGoogle = () => {
@@ -24,7 +24,6 @@ export const SigninGoogle = () => {
       const password = 'google';
       getAccessToken({ username: '', email, password });
       login(email);
-      console.log('로그인');
       return;
     }
 
@@ -37,7 +36,7 @@ export const SigninGoogle = () => {
           const email = res.user.email;
           const password = 'google';
           getAccessToken({ username, email, password });
-          localStorage.setItem(user.userimgURL, res.user.photoURL as string);
+          sessionStorage.setItem(user.userimgURL, res.user.photoURL as string);
         }
 
         swal(msg.loginsuccess, msg.loginsuccessBody, 'success');

@@ -90,7 +90,7 @@ const MapArea = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 560px;
+    width: 800px;
     height: 500px;
   }
   @media (max-width: 768px) {

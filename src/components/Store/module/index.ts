@@ -2,8 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './user';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import globalmodalState from './globalmodal';
+import sessionStorage from 'redux-persist/lib/storage/session';
 
 const reducers = combineReducers({
   user: userSlice.reducer,
@@ -12,9 +12,9 @@ const reducers = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: sessionStorage,
   whilelist: ['user'],
-  timeout: 3600000,
+  timeout: 1800000,
 };
 
 const persist = persistReducer(persistConfig, reducers);
@@ -24,6 +24,10 @@ const makeStore = () => {
     reducer: {
       persist,
     },
+    middleware: (defaultMiddleware) =>
+      defaultMiddleware({
+        serializableCheck: false,
+      }),
   });
 
   return store;

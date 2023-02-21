@@ -9,8 +9,8 @@ const SignOutGoogle = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleSingout = async () => {
-    await signOut(auth).then(() => {
-      dispatch(LOGOUTCHECK());
+    await signOut(auth).then(async () => {
+      await dispatch(LOGOUTCHECK());
       localStorage.removeItem('imgURL');
       localStorage.removeItem('accessToken');
     });

@@ -11,8 +11,8 @@ const SignOutGoogle = () => {
   const handleSingout = async () => {
     await signOut(auth).then(async () => {
       await dispatch(LOGOUTCHECK());
-      localStorage.removeItem('imgURL');
-      localStorage.removeItem('accessToken');
+      sessionStorage.removeItem('imgURL');
+      sessionStorage.removeItem('accessToken');
     });
   };
   return (

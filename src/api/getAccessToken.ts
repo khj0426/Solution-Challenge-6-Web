@@ -10,7 +10,7 @@ const getAccessToken = ({
   password: string;
 }) => {
   const getLoginToken = async () => {
-    const res = await axios.post('http://34.82.77.224/login', {
+    const res = await axios.post('http://bepserver.duckdns.org/login', {
       email: email,
       password: password,
     });
@@ -18,17 +18,17 @@ const getAccessToken = ({
     return res;
   };
   const getSignInToken = async () => {
-    const res = await axios.post('http://34.82.77.224/login/google', {
+    const res = await axios.post('http://bepserver.duckdns.org/login/google', {
       email,
       name: username,
       password,
     });
     if (res.status === 200) {
-      localStorage.setItem('accessToken', res.data.accessToken);
+      sessionStorage.setItem('accessToken', res.data.accessToken);
     }
   };
 
-  if (localStorage.getItem('accessToken') && true) {
+  if (sessionStorage.getItem('accessToken') && true) {
     return getLoginToken();
   }
   return getSignInToken();

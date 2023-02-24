@@ -16,9 +16,7 @@ import { useState, useEffect } from 'react';
 
 export default function LoginModal() {
   const dispatch = useDispatch();
-  const [open, setOpen] = useState<boolean>(
-    newStore.getState().persist.globalModal.modal
-  );
+  const [open, setOpen] = useState<boolean>(false);
   const modalOff = () => {
     dispatch(deactive());
     setOpen(false); // update the state of the dialog

@@ -35,3 +35,5 @@ const makeStore = () => {
 
 const newStore = makeStore();
 export default newStore;
+
+export type RootState = ReturnType<typeof reducers>;

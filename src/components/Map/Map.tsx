@@ -97,8 +97,8 @@ const MapArea = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    height: 80vh;
+    width: 100%;
+    height: 95vh;
   }
 `;
 

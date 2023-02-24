@@ -10,7 +10,7 @@ const getAccessToken = ({
   password: string;
 }) => {
   const getLoginToken = async () => {
-    const res = await axios.post('http://bepserver.duckdns.org/login', {
+    const res = await axios.post('https://bep-server.duckdns.org/login', {
       email: email,
       password: password,
     });
@@ -18,7 +18,7 @@ const getAccessToken = ({
     return res;
   };
   const getSignInToken = async () => {
-    const res = await axios.post('http://bepserver.duckdns.org/login/google', {
+    const res = await axios.post('https://bepserver.duckdns.org/login/google', {
       email,
       name: username,
       password,

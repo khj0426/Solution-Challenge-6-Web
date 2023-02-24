@@ -2,14 +2,14 @@ import { Wrapper } from '@googlemaps/react-wrapper';
 import MapComponent from './Map';
 import styled from 'styled-components';
 import { memo } from 'react';
-
-const Map = () => {
+import { Theme } from '@mui/material/styles';
+const Map = ({ mode }: { mode: Theme }) => {
   if (process.env.NEXT_PUBLIC_MAP_KEY)
     return (
       <StyledMain>
         <StyledMapWrapper>
           <Wrapper apiKey={process.env.NEXT_PUBLIC_MAP_KEY}>
-            <MapComponent />
+            <MapComponent mode={mode} />
           </Wrapper>
         </StyledMapWrapper>
       </StyledMain>

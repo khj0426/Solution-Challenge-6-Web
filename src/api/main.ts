@@ -18,7 +18,7 @@ const getAccessToken = ({
         password,
       },
     });
-    alert(resData);
+
     if (resData.status === 200) {
       sessionStorage.setItem('accessToken', resData.data.accessToken);
     }
@@ -33,7 +33,7 @@ const getAccessToken = ({
         password,
       },
     });
-    alert(resData);
+
     if (resData.status === 200) {
       sessionStorage.setItem('accessToken', resData.data.accessToken);
     }

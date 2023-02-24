@@ -8,12 +8,18 @@ const userSlice = createSlice({
   initialState: initalStore,
   reducers: {
     LOGINCHECK(state, action: PayloadAction<string>) {
-      state.isLogin = true;
-      state.email = action.payload;
+      return {
+        ...state,
+        isLogin: true,
+        email: action.payload,
+      };
     },
     LOGOUTCHECK(state) {
-      state.isLogin = false;
-      state.email = '';
+      return {
+        ...state,
+        isLogin: false,
+        email: '',
+      };
     },
   },
 });

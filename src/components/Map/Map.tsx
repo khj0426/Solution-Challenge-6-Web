@@ -2,9 +2,12 @@ import { useRef, useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import styled from 'styled-components';
 import { msg } from '../../constants/mapConstants';
-import mapStyle from '../../styles/mapStyle.json';
+import lightStyle from '../../styles/mapStyle.json';
+import darkStyle from '../../styles/darkmapStyle.json';
+import { Theme } from '@mui/material/styles';
+import { lightTheme } from '../../styles/globalmode-style';
 
-const MapComponent = () => {
+const MapComponent = ({ mode }: { mode: Theme }) => {
   //미션 성공 여부 전역적으로 관리해야 함
 
   const ref = useRef<HTMLDivElement>(null);
@@ -14,8 +17,8 @@ const MapComponent = () => {
   const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
 
   const center: google.maps.LatLngLiteral = {
-    lat: 0,
-    lng: 0,
+    lat: 37,
+    lng: 127,
   };
 
   const [marker, setMarker] = useState<google.maps.Marker | null>(null);
@@ -45,12 +48,13 @@ const MapComponent = () => {
           center,
           zoom: 5,
           minZoom: 4,
-          styles: mapStyle,
+          styles: mode === lightTheme ? lightStyle : darkStyle,
         })
       );
     }
 
     if (map) {
+      map.setOptions({ styles: mode === lightTheme ? lightStyle : darkStyle });
       google.maps.event.addListener(
         map,
         'click',
@@ -68,14 +72,16 @@ const MapComponent = () => {
         }
       );
     }
-  }, [ref, map, marker]);
+  }, [ref, map, marker, mode]);
 
   return (
-    <MapArea
-      ref={ref}
-      onClick={() => onclick()}
-      onDoubleClick={() => onclick()}
-    ></MapArea>
+    <>
+      <MapArea
+        ref={ref}
+        onClick={() => onclick()}
+        onDoubleClick={() => onclick()}
+      ></MapArea>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 //초기 상태 값 저장
 const initalStore = { isLogin: false, email: '' };
@@ -7,7 +7,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState: initalStore,
   reducers: {
-    LOGINCHECK(state, action) {
+    LOGINCHECK(state, action: PayloadAction<string>) {
       state.isLogin = true;
       state.email = action.payload;
     },

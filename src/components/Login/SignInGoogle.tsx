@@ -6,10 +6,11 @@ import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { msg, user } from '../../constants/mapConstants';
 import { useRouter } from 'next/dist/client/router';
-import getAccessToken from '../../api/getAccessToken';
+import getAccessToken from '../../api/main';
 import newStore from '../Store/module';
 import loginBtntheme from '../../styles/LoginButton';
 import { ThemeProvider, Button } from '@mui/material';
+import { deactive } from '../Store/module/globalmodal';
 
 export const SigninGoogle = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const SigninGoogle = () => {
       const password = 'google';
       getAccessToken({ username: '', email, password });
       login(email);
-      return;
+      router.reload();
     }
 
     const googleProvider = new GoogleAuthProvider();
@@ -38,8 +39,9 @@ export const SigninGoogle = () => {
           getAccessToken({ username, email, password });
           sessionStorage.setItem(user.userimgURL, res.user.photoURL as string);
         }
-
         swal(msg.loginsuccess, msg.loginsuccessBody, 'success');
+        dispatch(deactive());
+        router.reload();
         return res;
       })
       .catch((err) => {

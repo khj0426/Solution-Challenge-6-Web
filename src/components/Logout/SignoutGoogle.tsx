@@ -14,6 +14,7 @@ const SignOutGoogle = () => {
       sessionStorage.removeItem('imgURL');
       sessionStorage.removeItem('accessToken');
     });
+    router.reload();
   };
   return (
     <Button
@@ -21,7 +22,6 @@ const SignOutGoogle = () => {
       style={{ fontWeight: '500', fontSize: '15px' }}
       onClick={() => {
         handleSingout();
-        router.replace('/');
       }}
     >
       logOut

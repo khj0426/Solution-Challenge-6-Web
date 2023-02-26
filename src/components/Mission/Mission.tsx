@@ -15,12 +15,12 @@ const Mission = ({
           sx: {
             width: 340,
             height: 'auto',
-            maxHeight: 350,
+            background: '#FFFFFF',
+            borderRadius: '10px',
           },
           style: {
             display: 'flex',
             marginLeft: 'auto',
-
             fontSize: '15px',
           },
         }}

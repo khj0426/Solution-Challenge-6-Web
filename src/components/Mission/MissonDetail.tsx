@@ -5,46 +5,42 @@ export const MissionDetail = () => {
     <>
       <Card
         style={{
-          background: '#ffffff',
-          boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.25)',
+          borderBottom: '3px solid #CCCCCC',
         }}
       >
         <CardContent>
           <StyledButTextArea>
             <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
+
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                gap: '5px',
               }}
             >
               <Typography
-                component="div"
-                sx={{
-                  mb: 1.5,
-                  height: '40px',
+                style={{
+                  marginRight: 'auto',
                   display: 'flex',
-                  alignItems: 'center',
-                  margin: 0,
-                  fontSize: '10px',
-                  color: '#333333',
+                  fontSize: '13px',
                 }}
               >
                 LIFE BELOW WATER
               </Typography>
               <Typography
-                component="div"
-                sx={{
+                component="p"
+                style={{
+                  marginRight: 'auto',
                   display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
+                  fontWeight: '700',
                   fontSize: '15px',
-                  fontWeight: '550',
-                  color: '#121212',
                 }}
               >
-                If you want to solve other problem, Buy it 20$
+                If you want to solve other problem, Buy it
+                20asdasdsasdasdasdasdasadsadasd If you want to solve other
+                problem, Buy it 20asdasdsasdasdasdasdasadsadasd
+                Iasdsasdasdasdasdasadsadasd
               </Typography>
             </div>
           </StyledButTextArea>
@@ -57,5 +53,7 @@ export const MissionDetail = () => {
 const StyledButTextArea = styled.div`
   display: flex;
   align-items: center;
-  height: auto;
+  justify-content: center;
+  width: 100%;
+  gap: 5px;
 `;

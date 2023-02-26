@@ -10,8 +10,9 @@ import loginBtntheme from '../../styles/LoginButton';
 import { ThemeProvider, Button } from '@mui/material';
 import { deactive } from '../Store/module/globalmodal';
 import { RootState } from '../Store/module';
-
+import { useRouter } from 'next/router';
 export const SigninGoogle = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const userEmail = useSelector(
     (state: RootState) => state.user && state.user.email
@@ -32,6 +33,7 @@ export const SigninGoogle = () => {
     const googleProvider = new GoogleAuthProvider();
     await signInWithPopup(auth, googleProvider)
       .then((res) => {
+        console.log(res.user.getIdToken());
         if (res.user.email && res.user.displayName) {
           login(res.user.email);
           const username = res.user.displayName;
@@ -58,7 +60,7 @@ export const SigninGoogle = () => {
           variant="text"
           color="inherit"
           onClick={() => {
-            handleLogin();
+            handleLogin().then(() => router.push(router.asPath));
           }}
         ></Button>
       </ThemeProvider>

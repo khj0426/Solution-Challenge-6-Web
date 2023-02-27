@@ -3,13 +3,22 @@ import MapComponent from './Map';
 import styled from 'styled-components';
 import { memo } from 'react';
 import { Theme } from '@mui/material/styles';
-const Map = ({ mode }: { mode: Theme }) => {
+import MyAppBar from '../Navbar/TopNav';
+import { propsFunction } from '../Navbar/TopNav';
+const Map = ({
+  mode,
+  onChangeTheme,
+}: {
+  mode: Theme;
+  onChangeTheme: propsFunction;
+}) => {
   if (process.env.NEXT_PUBLIC_MAP_KEY)
     return (
       <StyledMain>
         <StyledMapWrapper>
           <Wrapper apiKey={process.env.NEXT_PUBLIC_MAP_KEY}>
             <MapComponent mode={mode} />
+            <MyAppBar mode={mode} onChangeTheme={onChangeTheme} />
           </Wrapper>
         </StyledMapWrapper>
       </StyledMain>
@@ -20,10 +29,10 @@ const Map = ({ mode }: { mode: Theme }) => {
 const StyledMapWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  margin-top: 2%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 5%;
 `;
 
 const StyledMain = styled.main`

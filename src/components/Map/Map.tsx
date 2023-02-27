@@ -60,14 +60,14 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
         'click',
         (e: google.maps.MapMouseEvent) => {
           const pos = e.latLng?.toJSON();
+          if (marker) {
+            marker.setPosition(pos);
+          } else {
+            setMarker(new google.maps.Marker({ position: pos, map }));
+          }
 
           if (pos) {
             setPosition(pos);
-            if (marker) {
-              marker.setPosition(pos);
-            } else {
-              setMarker(new google.maps.Marker({ position: pos, map }));
-            }
           }
         }
       );
@@ -96,7 +96,7 @@ const MapArea = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 800px;
+    width: 100%;
     height: 500px;
   }
   @media (max-width: 768px) {

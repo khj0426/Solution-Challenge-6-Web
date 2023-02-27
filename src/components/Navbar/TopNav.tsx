@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Typography,
-  Avatar,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
+import { Typography, Avatar } from '@mui/material';
 import SignOutGoogle from '../Logout/SignoutGoogle';
 import { user } from '../../constants/mapConstants';
 import { Theme, ThemeProvider } from '@mui/material/styles';
@@ -15,14 +9,13 @@ import DrawerButtonTheme from '../../styles/DrawerButton';
 import { useDispatch } from 'react-redux';
 import { active } from '../Store/module/globalmodal';
 import { useRouter } from 'next/router';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+export type propsFunction = () => void;
 function MyAppBar({
   onChangeTheme,
-  mode,
 }: {
   mode: Theme;
-  onChangeTheme: any;
+  onChangeTheme: propsFunction;
 }) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -48,36 +41,38 @@ function MyAppBar({
   };
 
   return (
-    <ThemeProvider theme={mode}>
-      <Accordion defaultChecked={true}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}></AccordionSummary>
-        <AccordionDetails>
-          <div
-            style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}
-          >
-            <SignOutGoogle />
-            <Avatar
-              src={img}
-              alt="User Profile Img provided by Google"
-              onClick={HandleClickAvatar}
-              sx={{ width: 30, height: 30 }}
-            />
-            <ThemeProvider theme={DrawerButtonTheme}>
-              <Avatar
-                onClick={() => setDrawer(!drawer)}
-                src="/img/startBtn.jpg"
-                sx={{ width: 30, height: 30 }}
-              />
-            </ThemeProvider>
-            <Typography>
-              <Switch onChange={() => onChangeTheme()} />
-            </Typography>
+    <div
+      style={{
+        display: 'flex',
+        gap: '5px',
+        height: 'auto',
+        marginTop: '10px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+      }}
+    >
+      <SignOutGoogle />
 
-            <Mission state={drawer} setState={setDrawer} />
-          </div>
-        </AccordionDetails>
-      </Accordion>
-    </ThemeProvider>
+      <Typography>
+        <Switch onChange={() => onChangeTheme()} />
+      </Typography>
+      <Avatar
+        src={img}
+        alt="User Profile Img provided by Google"
+        onClick={HandleClickAvatar}
+        sx={{ width: 30, height: 30 }}
+      />
+      <ThemeProvider theme={DrawerButtonTheme}>
+        <Avatar
+          onClick={() => setDrawer(!drawer)}
+          src="/img/startBtn.jpg"
+          sx={{ width: 30, height: 30 }}
+        />
+      </ThemeProvider>
+
+      <Mission state={drawer} setState={setDrawer} />
+    </div>
   );
 }
 

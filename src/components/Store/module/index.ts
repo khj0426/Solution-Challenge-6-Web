@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import globalmodalState from './globalmodal';
 import sessionStorage from 'redux-persist/lib/storage/session';
+import globalLatLng from './latandlng';
 
 const reducers = combineReducers({
   user: userSlice.reducer,
   globalModal: globalmodalState.reducer,
+  globalLatLng: globalLatLng.reducer,
 });
 
 const persistConfig = {

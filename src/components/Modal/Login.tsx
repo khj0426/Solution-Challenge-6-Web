@@ -60,7 +60,7 @@ export default function LoginModal() {
               </Typography>
               <CardMedia
                 sx={{ height: 200, width: 200 }}
-                image="/img/EarthImg.jpg"
+                image="/img/Earth.gif"
                 title="EarthImg"
               />
               <CardContent>

@@ -46,14 +46,13 @@ function MyAppBar({
         display: 'flex',
         gap: '5px',
         height: 'auto',
-        marginTop: '10px',
+        marginTop: '50px',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
       }}
     >
       <SignOutGoogle />
-
       <Typography>
         <Switch onChange={() => onChangeTheme()} />
       </Typography>

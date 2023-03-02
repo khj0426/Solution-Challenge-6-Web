@@ -1,6 +1,16 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
-import styled from 'styled-components';
-export const MissionDetail = () => {
+import { useState, Dispatch, SetStateAction } from 'react';
+import styled, { css } from 'styled-components';
+import newStore from '../Store/module';
+export const MissionDetail = ({
+  misson,
+  setAction,
+  target,
+}: {
+  misson: number;
+  setAction: Dispatch<SetStateAction<number>>;
+  target: boolean;
+}) => {
   return (
     <>
       <Card
@@ -9,7 +19,12 @@ export const MissionDetail = () => {
         }}
       >
         <CardContent>
-          <StyledButTextArea>
+          <StyledButTextArea
+            state={target}
+            onClick={() => {
+              setAction(misson);
+            }}
+          >
             <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
 
             <div
@@ -50,10 +65,25 @@ export const MissionDetail = () => {
   );
 };
 
-const StyledButTextArea = styled.div`
+const StyledSelected = css`
+  background-color: #ade7f7;
+  color: #000;
+  cursor: pointer;
+`;
+
+const StyledNotSelected = css`
+  background-color: #ffffff;
+  color: #000;
+  cursor: pointer;
+`;
+
+const StyledButTextArea = styled.div<{ state: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   gap: 5px;
+
+  ${({ state }) => state === true && StyledSelected}
+  ${({ state }) => state === false && StyledNotSelected}
 `;

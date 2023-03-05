@@ -1,6 +1,6 @@
 import { Drawer } from '@mui/material';
 import { SetStateAction, Dispatch } from 'react';
-import { MissionDetail } from './MissonDetail';
+import MissonDetail from './MissonDetail';
 import { useState } from 'react';
 const Mission = ({
   state,
@@ -30,9 +30,9 @@ const Mission = ({
         open={state}
         onClose={() => setState(false)}
       >
-        <MissionDetail misson={1} setAction={setMisson} target={misson === 1} />
-        <MissionDetail misson={2} setAction={setMisson} target={misson === 2} />
-        <MissionDetail misson={3} setAction={setMisson} target={misson === 3} />
+        <MissonDetail misson={1} setAction={setMisson} target={misson === 1} />
+        <MissonDetail misson={2} setAction={setMisson} target={misson === 2} />
+        <MissonDetail misson={3} setAction={setMisson} target={misson === 3} />
       </Drawer>
     </>
   );

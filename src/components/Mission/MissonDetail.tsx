@@ -1,8 +1,9 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
-import { useState, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import styled, { css } from 'styled-components';
-import newStore from '../Store/module';
-export const MissionDetail = ({
+import { requestInstance } from '../../api/core';
+import { useEffect, useState } from 'react';
+const MissionDetail = ({
   misson,
   setAction,
   target,
@@ -11,6 +12,31 @@ export const MissionDetail = ({
   setAction: Dispatch<SetStateAction<number>>;
   target: boolean;
 }) => {
+  type mainResponse = {
+    id: number;
+    question: string;
+    latitude: string;
+    longitude: string;
+    mpoint: number;
+  };
+
+  const [res, setRes] = useState<mainResponse>({
+    id: 0,
+    question: '',
+    latitude: '',
+    longitude: '',
+    mpoint: 0,
+  });
+
+  useEffect(() => {
+    const getMisson = async () => {
+      const data = await requestInstance.get('/main');
+      console.log(data);
+    };
+
+    getMisson();
+  }, []);
+
   return (
     <>
       <Card
@@ -41,7 +67,7 @@ export const MissionDetail = ({
                   fontSize: '13px',
                 }}
               >
-                LIFE BELOW WATER
+                {res.question}
               </Typography>
               <Typography
                 component="p"
@@ -52,10 +78,7 @@ export const MissionDetail = ({
                   fontSize: '15px',
                 }}
               >
-                If you want to solve other problem, Buy it
-                20asdasdsasdasdasdasdasadsadasd If you want to solve other
-                problem, Buy it 20asdasdsasdasdasdasdasadsadasd
-                Iasdsasdasdasdasdasadsadasd
+                {res.latitude}
               </Typography>
             </div>
           </StyledButTextArea>
@@ -87,3 +110,5 @@ const StyledButTextArea = styled.div<{ state: boolean }>`
   ${({ state }) => state === true && StyledSelected}
   ${({ state }) => state === false && StyledNotSelected}
 `;
+
+export default MissionDetail;

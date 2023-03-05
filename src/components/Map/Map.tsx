@@ -41,8 +41,9 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     };
 
     if (map) {
-      const boundry = map.getBounds();
+      
       map.setZoom(8);
+      const boundry = map.getBounds();
       if (boundry?.contains(activepos)) {
         console.log(activepos);
         swal(msg.sucessMain, msg.successBody, 'success');

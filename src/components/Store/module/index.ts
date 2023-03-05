@@ -5,11 +5,13 @@ import { persistReducer } from 'redux-persist';
 import globalmodalState from './globalmodal';
 import sessionStorage from 'redux-persist/lib/storage/session';
 import globalLatLng from './latandlng';
+import missonAnswer from './misson/answer';
 
 const reducers = combineReducers({
   user: userSlice.reducer,
   globalModal: globalmodalState.reducer,
   globalLatLng: globalLatLng.reducer,
+  missonAns: missonAnswer.reducer,
 });
 
 const persistConfig = {

@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TypeMission } from '../../../Mission/Mission';
 
+type MissonArray = TypeMission[];
+
 const initState = {
   answer: {
     first: {},
@@ -13,7 +15,7 @@ const missonAnswer = createSlice({
   name: 'answerofMisson',
   initialState: initState,
   reducers: {
-    setAnswer(state, payload: PayloadAction<TypeMission[]>) {
+    setAnswer(state, payload: PayloadAction<MissonArray>) {
       return {
         answer: {
           first: {

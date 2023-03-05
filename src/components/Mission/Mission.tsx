@@ -65,10 +65,10 @@ const Mission = ({ state, setState }: Props) => {
       {missions.map((mission, index) => (
         <MissionDetail
           key={mission.id}
-          misson={index}
           setAction={setActivemisson}
           target={activemisson === index}
-          question={mission.question}
+          mission={mission}
+          index={index}
         />
       ))}
     </Drawer>

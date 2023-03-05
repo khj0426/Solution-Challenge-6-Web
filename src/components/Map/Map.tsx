@@ -6,15 +6,16 @@ import lightStyle from '../../styles/mapStyle.json';
 import darkStyle from '../../styles/darkmapStyle.json';
 import { Theme } from '@mui/material/styles';
 import { lightTheme } from '../../styles/globalmode-style';
+import newStore from '../Store/module';
 
 const MapComponent = ({ mode }: { mode: Theme }) => {
   //미션 성공 여부 전역적으로 관리해야 함
 
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
-  const [iscontain, setIsContain] = useState<boolean>(false);
-  const [, setZoom] = useState<number>();
-  const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
+  const [position, setPosition] = useState<google.maps.LatLngLiteral | null>(
+    null
+  );
 
   const center: google.maps.LatLngLiteral = {
     lat: 37,
@@ -34,10 +35,18 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
       return;
     }
 
-    if (map.getBounds()?.contains(temp) && !iscontain) {
-      setIsContain(true);
-      setZoom(map.getZoom());
-      swal(msg.sucessMain, msg.successBody, 'success');
+    const activepos: google.maps.LatLngLiteral = {
+      lat: newStore.getState().persist.globalLatLng.lat,
+      lng: newStore.getState().persist.globalLatLng.lng,
+    };
+
+    if (map) {
+      const boundry = map.getBounds();
+      map.setZoom(8);
+      if (boundry?.contains(activepos)) {
+        console.log(activepos);
+        swal(msg.sucessMain, msg.successBody, 'success');
+      }
     }
   };
 

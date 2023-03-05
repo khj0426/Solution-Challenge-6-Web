@@ -1,18 +1,22 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import styled, { css } from 'styled-components';
+import { TypeMission } from './Mission';
+import { setLatLng } from '../Store/module/latandlng';
+import { useDispatch } from 'react-redux';
 
 const MissionDetail = ({
-  misson,
   setAction,
   target,
-  question,
+  mission,
+  index,
 }: {
-  misson: number;
   setAction: Dispatch<SetStateAction<number>>;
   target: boolean;
-  question: string;
+  mission: TypeMission;
+  index: number;
 }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <Card
@@ -24,7 +28,13 @@ const MissionDetail = ({
           <StyledButTextArea
             state={target}
             onClick={() => {
-              setAction(misson);
+              setAction(index);
+              dispatch(
+                setLatLng({
+                  lat: parseFloat(mission.latitude),
+                  lng: parseFloat(mission.longitude),
+                })
+              );
             }}
           >
             <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
@@ -43,7 +53,7 @@ const MissionDetail = ({
                   fontSize: '13px',
                 }}
               >
-                {question}
+                {mission.question}
               </Typography>
               <Typography
                 component="p"

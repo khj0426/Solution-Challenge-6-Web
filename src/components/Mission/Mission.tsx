@@ -2,8 +2,10 @@ import { Drawer } from '@mui/material';
 import { SetStateAction, Dispatch, useEffect, useState } from 'react';
 import axios from 'axios';
 import MissionDetail from './MissonDetail';
+import { setAnswer } from '../Store/module/misson/answer';
+import { useDispatch } from 'react-redux';
 
-type Mission = {
+export type TypeMission = {
   id: number;
   question: string;
   latitude: string;
@@ -17,7 +19,9 @@ type Props = {
 };
 
 const Mission = ({ state, setState }: Props) => {
-  const [missions, setMissions] = useState<Mission[]>([]);
+  const dispatch = useDispatch();
+
+  const [missions, setMissions] = useState<TypeMission[]>([]);
   const [activemisson, setActivemisson] = useState<number>(0);
 
   useEffect(() => {
@@ -31,7 +35,13 @@ const Mission = ({ state, setState }: Props) => {
     };
 
     fetchMissions();
-  }, []);
+  }, [sessionStorage.getItem('accessToken')]);
+
+  useEffect(() => {
+    if (missions.length > 0) {
+      dispatch(setAnswer(missions));
+    }
+  }, [missions]);
 
   return (
     <Drawer

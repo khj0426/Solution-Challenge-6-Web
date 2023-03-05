@@ -1,42 +1,18 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import styled, { css } from 'styled-components';
-import { requestInstance } from '../../api/core';
-import { useEffect, useState } from 'react';
+
 const MissionDetail = ({
   misson,
   setAction,
   target,
+  question,
 }: {
   misson: number;
   setAction: Dispatch<SetStateAction<number>>;
   target: boolean;
+  question: string;
 }) => {
-  type mainResponse = {
-    id: number;
-    question: string;
-    latitude: string;
-    longitude: string;
-    mpoint: number;
-  };
-
-  const [res, setRes] = useState<mainResponse>({
-    id: 0,
-    question: '',
-    latitude: '',
-    longitude: '',
-    mpoint: 0,
-  });
-
-  useEffect(() => {
-    const getMisson = async () => {
-      const data = await requestInstance.get('/main');
-      console.log(data);
-    };
-
-    getMisson();
-  }, []);
-
   return (
     <>
       <Card
@@ -67,7 +43,7 @@ const MissionDetail = ({
                   fontSize: '13px',
                 }}
               >
-                {res.question}
+                {question}
               </Typography>
               <Typography
                 component="p"
@@ -77,9 +53,7 @@ const MissionDetail = ({
                   fontWeight: '700',
                   fontSize: '15px',
                 }}
-              >
-                {res.latitude}
-              </Typography>
+              ></Typography>
             </div>
           </StyledButTextArea>
         </CardContent>

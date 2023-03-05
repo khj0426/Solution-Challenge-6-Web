@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TypeMission } from 'components/Mission/Mission';
+import { TypeMission } from '../../../Mission/Mission';
 
 const initState = {
   answer: {

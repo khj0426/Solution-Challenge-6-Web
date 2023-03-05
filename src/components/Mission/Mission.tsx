@@ -31,7 +31,7 @@ const Mission = ({ state, setState }: Props) => {
     };
 
     fetchMissions();
-  }, []);
+  }, [sessionStorage.getItem('accessToken')]);
 
   return (
     <Drawer

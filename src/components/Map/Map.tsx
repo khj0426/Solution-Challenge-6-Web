@@ -41,10 +41,14 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     };
 
     if (map) {
+      map.setZoom(7);
+      const newPos = marker?.getPosition();
+
+      if (typeof newPos !== 'undefined' && newPos !== null) {
+        map.setCenter(newPos);
+      }
       const boundry = map.getBounds();
-      map.setZoom(8);
       if (boundry?.contains(activepos)) {
-        console.log(activepos);
         swal(msg.sucessMain, msg.successBody, 'success');
       }
     }

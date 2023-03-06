@@ -4,6 +4,7 @@ import axios from 'axios';
 import MissionDetail from './MissonDetail';
 import { setAnswer } from '../Store/module/misson/answer';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
 export type TypeMission = {
   id: number;
@@ -23,15 +24,24 @@ const Mission = ({ state, setState }: Props) => {
 
   const [missions, setMissions] = useState<TypeMission[]>([]);
   const [activemisson, setActivemisson] = useState<number>(0);
+  const [authorize, hasAuthorize] = useState<boolean>(true);
 
   useEffect(() => {
+    if (sessionStorage.getItem('accessToken') === null) {
+      hasAuthorize(false);
+      return;
+    }
+
     const fetchMissions = async () => {
-      const { data } = await axios.get('/api/main', {
+      const { data, status } = await axios.get('/api/main', {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
         },
       });
-      setMissions(data);
+      if (status === 200) {
+        setMissions(data);
+        hasAuthorize(true);
+      }
     };
 
     fetchMissions();
@@ -62,6 +72,10 @@ const Mission = ({ state, setState }: Props) => {
       open={state}
       onClose={() => setState(false)}
     >
+      {authorize === false ? (
+        <StyledNotLogin>로그인이 필요합니다</StyledNotLogin>
+      ) : null}
+
       {missions.map((mission, index) => (
         <MissionDetail
           key={mission.id}
@@ -74,5 +88,12 @@ const Mission = ({ state, setState }: Props) => {
     </Drawer>
   );
 };
+
+const StyledNotLogin = styled.div`
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default Mission;

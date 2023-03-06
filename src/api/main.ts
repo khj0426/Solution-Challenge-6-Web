@@ -30,6 +30,7 @@ const getAccessToken = ({
       data: {
         email,
         name: username,
+        provider: 'google',
         password,
       },
     });

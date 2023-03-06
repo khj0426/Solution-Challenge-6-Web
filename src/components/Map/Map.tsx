@@ -17,24 +17,27 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     null
   );
 
-  const center: google.maps.LatLngLiteral = {
-    lat: 37,
-    lng: 127,
+  //set new Marker in new Position
+  const setMark = ({
+    pos,
+    map,
+  }: {
+    pos: google.maps.LatLngLiteral;
+    map: google.maps.Map;
+  }) => {
+    if (marker) {
+      marker.setPosition(pos);
+    } else {
+      setMarker(
+        new google.maps.Marker({
+          position: pos,
+          map,
+        })
+      );
+    }
   };
 
-  const [marker, setMarker] = useState<google.maps.Marker | null>(null);
-
-  //맵을 눌렀을 떄
-  const onclick = () => {
-    // 나라의 위도와 경도가 포함되는지 (임시 나라 위치)
-    const temp: google.maps.LatLngLiteral = {
-      lng: 127,
-      lat: 37,
-    };
-    if (typeof map === 'undefined') {
-      return;
-    }
-
+  const setnewMap = ({ map }: { map: google.maps.Map }) => {
     const activepos: google.maps.LatLngLiteral = {
       lat: newStore.getState().persist.globalLatLng.lat,
       lng: newStore.getState().persist.globalLatLng.lng,
@@ -43,9 +46,8 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     if (map) {
       map.setZoom(7);
       const newPos = marker?.getPosition();
-
       if (typeof newPos !== 'undefined' && newPos !== null) {
-        map.setCenter(newPos);
+        map.panTo(newPos);
       }
       const boundry = map.getBounds();
       if (boundry?.contains(activepos)) {
@@ -53,6 +55,13 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
       }
     }
   };
+
+  const center: google.maps.LatLngLiteral = {
+    lat: 37,
+    lng: 127,
+  };
+
+  const [marker, setMarker] = useState<google.maps.Marker | null>(null);
 
   useEffect(() => {
     if (ref.current && !map) {
@@ -73,15 +82,12 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
         'click',
         (e: google.maps.MapMouseEvent) => {
           const pos = e.latLng?.toJSON();
-          if (marker) {
-            marker.setPosition(pos);
-          } else {
-            setMarker(new google.maps.Marker({ position: pos, map }));
+          if (pos && true) {
+            setPosition(pos);
+            setMark({ pos, map });
           }
 
-          if (pos) {
-            setPosition(pos);
-          }
+          setnewMap({ map });
         }
       );
     }
@@ -89,11 +95,7 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
 
   return (
     <>
-      <MapArea
-        ref={ref}
-        onClick={() => onclick()}
-        onDoubleClick={() => onclick()}
-      ></MapArea>
+      <MapArea ref={ref}></MapArea>
     </>
   );
 };

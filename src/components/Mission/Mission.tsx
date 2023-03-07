@@ -14,7 +14,7 @@ export type TypeMission = {
   mpoint: number;
 };
 
-type Props = {
+export type Props = {
   state: boolean;
   setState: Dispatch<SetStateAction<boolean>>;
 };

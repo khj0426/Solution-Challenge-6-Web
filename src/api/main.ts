@@ -46,4 +46,4 @@ const getAccessToken = ({
   getSignInToken();
 };
 
-export default getAccessToken;
+export { getAccessToken };

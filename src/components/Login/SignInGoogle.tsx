@@ -5,12 +5,13 @@ import { LOGINCHECK } from '../Store/module/user';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import { msg, user } from '../../constants/mapConstants';
-import getAccessToken from '../../api/main';
+import { getAccessToken } from '../../api/main';
 import loginBtntheme from '../../styles/LoginButton';
 import { ThemeProvider, Button } from '@mui/material';
 import { deactive } from '../Store/module/globalmodal';
 import { RootState } from '../Store/module';
 import { useRouter } from 'next/router';
+
 export const SigninGoogle = () => {
   const router = useRouter();
   const dispatch = useDispatch();

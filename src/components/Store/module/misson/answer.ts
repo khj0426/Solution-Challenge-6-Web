@@ -21,14 +21,20 @@ const missonAnswer = createSlice({
           first: {
             lat: payload.payload[0].latitude,
             lng: payload.payload[0].longitude,
+            score: payload.payload[0].mpoint,
+            id:payload.payload[0].id,
           },
           second: {
             lat: payload.payload[1].latitude,
             lng: payload.payload[1].longitude,
+            score: payload.payload[1].mpoint,
+            id:payload.payload[1].id,
           },
           third: {
             lat: payload.payload[2].latitude,
             lng: payload.payload[2].longitude,
+            score: payload.payload[2].mpoint,
+            id:payload.payload[2].id,
           },
         },
       };

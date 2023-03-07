@@ -7,15 +7,15 @@ import darkStyle from '../../styles/darkmapStyle.json';
 import { Theme } from '@mui/material/styles';
 import { lightTheme } from '../../styles/globalmode-style';
 import newStore from '../Store/module';
-
+import { MissonSuccess } from '../Mission/Success';
 const MapComponent = ({ mode }: { mode: Theme }) => {
   //미션 성공 여부 전역적으로 관리해야 함
 
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
-  const [position, setPosition] = useState<google.maps.LatLngLiteral | null>(
-    null
-  );
+  const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
+
+  const [clear, setClear] = useState<boolean>(false);
 
   //set new Marker in new Position
   const setMark = ({
@@ -44,14 +44,15 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     };
 
     if (map) {
-      map.setZoom(7);
+      map.setZoom(10);
       const newPos = marker?.getPosition();
       if (typeof newPos !== 'undefined' && newPos !== null) {
         map.panTo(newPos);
-      }
-      const boundry = map.getBounds();
-      if (boundry?.contains(activepos)) {
-        swal(msg.sucessMain, msg.successBody, 'success');
+        const boundry = map.getBounds();
+        if (boundry?.contains(activepos)) {
+          setClear(true);
+          swal(msg.sucessMain, msg.successBody, 'success');
+        }
       }
     }
   };
@@ -85,6 +86,7 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
           if (pos && true) {
             setPosition(pos);
             setMark({ pos, map });
+            setClear(false);
           }
 
           setnewMap({ map });
@@ -96,6 +98,7 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
+      {clear && true ? <MissonSuccess /> : null}
     </>
   );
 };

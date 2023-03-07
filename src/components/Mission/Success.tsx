@@ -1,10 +1,16 @@
 //미션 성공시 나타날 컴포넌트
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Image from 'next/image';
+import { useState } from 'react';
+import DonateModal from './Donate/main';
 export const MissonSuccess = () => {
+  const [modal, setModal] = useState<boolean>(false);
   return (
     <>
       <StyledSection>
+        {modal && true ? (
+          <DonateModal state={modal} setState={setModal} />
+        ) : null}
         <Image
           style={{ objectFit: 'cover', display: 'block' }}
           src="/img/success.png"
@@ -31,7 +37,11 @@ export const MissonSuccess = () => {
           attest to its rich history.
         </StylerdTextArea>
 
-        <StyledButton>
+        <StyledButton
+          onClick={() => {
+            setModal(true);
+          }}
+        >
           <Image
             src="/img/donation 1.png"
             alt="dantate image"

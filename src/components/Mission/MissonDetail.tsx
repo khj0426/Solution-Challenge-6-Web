@@ -1,10 +1,9 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { TypeMission } from './Mission';
 import { setLatLng } from '../Store/module/latandlng';
 import { useDispatch } from 'react-redux';
-
 const MissionDetail = ({
   setAction,
   target,
@@ -17,6 +16,8 @@ const MissionDetail = ({
   index: number;
 }) => {
   const dispatch = useDispatch();
+
+  const [score, showScore] = useState<boolean>(false);
   return (
     <>
       <Card
@@ -33,11 +34,17 @@ const MissionDetail = ({
                 setLatLng({
                   lat: parseFloat(mission.latitude),
                   lng: parseFloat(mission.longitude),
+                  id: mission.id,
                 })
               );
+              showScore(!score);
             }}
           >
-            <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
+            {score === false ? (
+              <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
+            ) : (
+              <Avatar style={{ color: 'black' }}>{mission.mpoint}</Avatar>
+            )}
 
             <div
               style={{

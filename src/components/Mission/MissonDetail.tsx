@@ -40,11 +40,7 @@ const MissionDetail = ({
               showScore(!score);
             }}
           >
-            {score === false ? (
-              <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
-            ) : (
-              <Avatar style={{ color: 'black' }}>{mission.mpoint}</Avatar>
-            )}
+            <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
 
             <div
               style={{
@@ -53,22 +49,32 @@ const MissionDetail = ({
                 gap: '5px',
               }}
             >
-              <Typography
-                style={{
-                  marginRight: 'auto',
-                  display: 'flex',
-                  fontSize: '13px',
-                }}
-              >
-                {mission.question}
-              </Typography>
+              {score === false ? (
+                <Typography
+                  style={{
+                    marginRight: 'auto',
+                    display: 'flex',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                  }}
+                >
+                  {mission.question}
+                </Typography>
+              ) : (
+                <StyledScoreActiveDiv>
+                  <div style={{ fontSize: '13px', fontWeight: '600' }}>
+                    {mission.miPoint}Point
+                  </div>
+                </StyledScoreActiveDiv>
+              )}
+
               <Typography
                 component="p"
                 style={{
                   marginRight: 'auto',
                   display: 'flex',
-                  fontWeight: '700',
-                  fontSize: '15px',
+                  fontWeight: '600',
+                  fontSize: '13px',
                 }}
               ></Typography>
             </div>
@@ -78,6 +84,10 @@ const MissionDetail = ({
     </>
   );
 };
+
+const StyledScoreActiveDiv = styled.div`
+  display: flex;
+`;
 
 const StyledSelected = css`
   background-color: #ade7f7;
@@ -93,8 +103,8 @@ const StyledNotSelected = css`
 
 const StyledButTextArea = styled.div<{ state: boolean }>`
   display: flex;
+  border-radius: 5px;
   align-items: center;
-  justify-content: center;
   width: 100%;
   gap: 5px;
 

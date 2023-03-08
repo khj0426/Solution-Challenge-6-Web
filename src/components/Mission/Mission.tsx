@@ -11,7 +11,7 @@ export type TypeMission = {
   question: string;
   latitude: string;
   longitude: string;
-  mpoint: number;
+  miPoint: number;
 };
 
 export type Props = {

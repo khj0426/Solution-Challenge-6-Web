@@ -1,4 +1,6 @@
-import { requestInstance } from './core';
+import { requestInstance } from './instance/axios';
+
+//토큰을 발급받는 함수
 
 const getAccessToken = ({
   username,

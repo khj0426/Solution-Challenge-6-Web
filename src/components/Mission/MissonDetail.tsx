@@ -2,7 +2,7 @@ import { Card, CardContent, Typography, Avatar } from '@mui/material';
 import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { TypeMission } from './Mission';
-import { setLatLng } from '../Store/module/latandlng';
+import { setLatLng } from '../Store/module/misson/latandlng';
 import { useDispatch } from 'react-redux';
 const MissionDetail = ({
   setAction,

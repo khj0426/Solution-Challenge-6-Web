@@ -12,19 +12,17 @@ import newStore from '../Store/module';
 import { SigninGoogle } from '../Login/SignInGoogle';
 import { deactive } from '../Store/module/globalmodal';
 import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function LoginModal() {
   const dispatch = useDispatch();
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(
+    newStore.getState().persist.globalModal.modal
+  );
   const modalOff = () => {
     dispatch(deactive());
     setOpen(false); // update the state of the dialog
   };
-
-  useEffect(() => {
-    setOpen(newStore.getState().persist.globalModal.modal);
-  }, []);
 
   return (
     <>

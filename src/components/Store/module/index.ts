@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import globalmodalState from './globalmodal';
 import sessionStorage from 'redux-persist/lib/storage/session';
-import globalLatLng from './latandlng';
+import globalLatLng from './misson/latandlng';
 import missonAnswer from './misson/answer';
 
 const reducers = combineReducers({

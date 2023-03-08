@@ -1,5 +1,5 @@
 import type { Props } from '../Mission';
-import { Modal, Box, Typography } from '@mui/material';
+import { Modal, Box } from '@mui/material';
 import styled from 'styled-components';
 import Image from 'next/image';
 const DonateList = ({ state, setState }: Props) => {
@@ -119,7 +119,7 @@ const DonateText = styled.div`
 
 const DonateImgArea = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   gap: 35px;
 
   margin-top: 15px;

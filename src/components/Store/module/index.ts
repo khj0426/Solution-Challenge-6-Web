@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userSlice from './user';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import globalmodalState from './globalmodal';
@@ -8,7 +7,6 @@ import globalLatLng from './latandlng';
 import missonAnswer from './misson/answer';
 
 const reducers = combineReducers({
-  user: userSlice.reducer,
   globalModal: globalmodalState.reducer,
   globalLatLng: globalLatLng.reducer,
   missonAns: missonAnswer.reducer,

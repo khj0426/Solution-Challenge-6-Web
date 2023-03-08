@@ -9,7 +9,8 @@ import DrawerButtonTheme from '../../styles/DrawerButton';
 import { useDispatch } from 'react-redux';
 import { active } from '../Store/module/globalmodal';
 import { useRouter } from 'next/router';
-
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import DonateList from '../Mission/Donate/DonateList';
 export type propsFunction = () => void;
 function MyAppBar({
   onChangeTheme,
@@ -21,7 +22,8 @@ function MyAppBar({
   const router = useRouter();
 
   const [img, setImg] = useState<string | undefined>('');
-  const [drawer, setDrawer] = useState<boolean>(false);
+  const [missonDrawer, setMissonOpen] = useState<boolean>(false);
+  const [donatelistDrawer, setDonateListOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const newimg = sessionStorage.getItem(user.userimgURL);
@@ -52,7 +54,10 @@ function MyAppBar({
         position: 'absolute',
       }}
     >
-      <SignOutGoogle />
+      <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
+        <FormatListBulletedIcon style={{ color: '#fff', cursor: 'pointer' }} />
+      </div>
+      {img && true ? <SignOutGoogle /> : null}
       <Typography>
         <Switch onChange={() => onChangeTheme()} />
       </Typography>
@@ -64,13 +69,13 @@ function MyAppBar({
       />
       <ThemeProvider theme={DrawerButtonTheme}>
         <Avatar
-          onClick={() => setDrawer(!drawer)}
+          onClick={() => setMissonOpen(!missonDrawer)}
           src="/img/startBtn.jpg"
           sx={{ width: 30, height: 30 }}
         />
       </ThemeProvider>
-
-      <Mission state={drawer} setState={setDrawer} />
+      <DonateList state={donatelistDrawer} setState={setDonateListOpen} />
+      <Mission state={missonDrawer} setState={setMissonOpen} />
     </div>
   );
 }

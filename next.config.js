@@ -9,7 +9,7 @@ const nextConfig = {
         source: '/api/main/:path*',
         
         destination: 'https://bepserver.duckdns.org/main',
-        source: '/api/main,
+        source: '/api/main',
       },
     ];
   },

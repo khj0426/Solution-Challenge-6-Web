@@ -1,19 +1,14 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
-    const apiPath = 'https://bepserver.duckdns.org/main';
-    const rewrites = [
+    return [
       {
+        destination: 'https://bepserver.duckdns.org/main/:path*',
         source: '/api/main/:path*',
-        destination: `${apiPath}/:path*`,
-      },
-      {
-        source: '/api/main',
-        destination: apiPath,
       },
     ];
-    return rewrites;
   },
 };
 

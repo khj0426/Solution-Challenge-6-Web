@@ -1,13 +1,13 @@
 //미션 성공시 나타날 컴포넌트
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import { useState } from 'react';
-import DonateModal from './Donate/main';
+import DonateModal from '../Modal/DonateModal';
 export const MissonSuccess = () => {
   const [modal, setModal] = useState<boolean>(false);
   return (
     <>
-      <StyledSection>
+      <StyledSection state={modal}>
         {modal && true ? (
           <DonateModal state={modal} setState={setModal} />
         ) : null}
@@ -106,7 +106,7 @@ const StyledH2 = styled.h2`
   width: 100%;
 `;
 
-const StyledSection = styled.section`
+const StyledSection = styled.section<{ state: boolean }>`
   margin: 0 auto;
   display: flex;
   position: fixed;
@@ -118,11 +118,16 @@ const StyledSection = styled.section`
   width: 350px;
   height: 600px;
   border-radius: 5px 0px 0px 5px;
-  background-color: #dedede;
+  background-color: #ffffff;
+  ${({ state }) => state === true && backOpacityNone}
 
   @media (max-width: 500px) {
     width: 350px;
     height: auto;
     max-height: 80%;
   }
+`;
+
+const backOpacityNone = css`
+  background-color: rgba(255, 255, 255, 0.4);
 `;

@@ -4,9 +4,7 @@ import { Props } from '../Mission';
 const DonateModal = ({ setState }: Props) => {
   return (
     <>
-      <StyledModalMain onClick={() => setState(false)}>
-        <StyledH2>How many points would you like to danate?</StyledH2>
-      </StyledModalMain>
+      <StyledModalMain onClick={() => setState(false)}></StyledModalMain>
     </>
   );
 };

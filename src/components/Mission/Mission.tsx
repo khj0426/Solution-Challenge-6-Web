@@ -33,7 +33,7 @@ const Mission = ({ state, setState }: Props) => {
     }
 
     const fetchMissions = async () => {
-      const { data, status } = await axios.get('/api/main', {
+      const { data, status } = await axios.get('api/main', {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
         },

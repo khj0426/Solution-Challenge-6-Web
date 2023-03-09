@@ -5,7 +5,10 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Bep</title>
-        <meta content="세상의 문제들의 인식개선을 돕기 위한 기부 플랫폼 Bep"></meta>
+        <meta
+          name="Bep"
+          content="세상의 문제들의 인식개선을 돕기 위한 기부 플랫폼"
+        />
       </Head>
 
       <body>

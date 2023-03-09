@@ -5,8 +5,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        destination: 'https://bepserver.duckdns.org/main',
-        source: '/api/main',
+        destination: 'https://bepserver.duckdns.org/main/:path*',
+        source: '/api/main/:path*',
       },
     ];
   },

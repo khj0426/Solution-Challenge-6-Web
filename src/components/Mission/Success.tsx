@@ -1,10 +1,36 @@
 //미션 성공시 나타날 컴포넌트
 import styled, { css } from 'styled-components';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DonateModal from '../Modal/DonateModal';
+import { getNewMisson } from '../../api/getmisson';
+import newStore from '../Store/module';
 export const MissonSuccess = () => {
+  type newMisson = {
+    category: string;
+    content: string;
+    imgUrl: string;
+    question: string;
+  };
   const [modal, setModal] = useState<boolean>(false);
+  const [data, setData] = useState<newMisson>({
+    category: '',
+    content: '',
+    imgUrl: '',
+    question: '',
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const id = newStore.getState().persist.globalLatLng.id + '';
+      const response = await getNewMisson({ id });
+      /*에러 핸들링 추가 할 부분 */
+
+      setData(response.data);
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <StyledSection state={modal}>
@@ -19,23 +45,9 @@ export const MissonSuccess = () => {
           width={350}
         />
 
-        <StyledP>LIFE BELOW WATER</StyledP>
-        <StyledH2>Find the Country with the Effel Tower.</StyledH2>
-        <StylerdTextArea>
-          France, in Western Europe, encompasses medieval cities, alpine
-          villages and Mediterranean beaches. Paris, its capital, is famed for
-          its fashion houses, classical art museums including the Louvre and
-          monuments like the Eiffel Tower. The country is also renowned for its
-          wines and sophisticated cuisine. Lascaux’s ancient cave drawings,
-          Lyon’s Roman theater and the vast Palace of Versailles attest to its
-          rich history. France, in Western Europe, encompasses medieval cities,
-          alpine villages and Mediterranean beaches. Paris, its capital, is
-          famed for its fashion houses, classical art museums including the
-          Louvre and monuments like the Eiffel Tower. The country is also
-          renowned for its wines and sophisticated cuisine. Lascaux’s ancient
-          cave drawings, Lyon’s Roman theater and the vast Palace of Versailles
-          attest to its rich history.
-        </StylerdTextArea>
+        <StyledP></StyledP>
+        <StyledH2>{data.question}</StyledH2>
+        <StylerdTextArea>{data.content}</StylerdTextArea>
 
         <StyledButton
           onClick={() => {

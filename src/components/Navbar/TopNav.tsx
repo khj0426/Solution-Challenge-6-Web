@@ -59,7 +59,9 @@ function MyAppBar({
       </div>
       {img && true ? <SignOutGoogle /> : null}
       <Typography>
-        <Switch onChange={() => onChangeTheme()} />
+        <label>
+          <Switch onChange={() => onChangeTheme()} />
+        </label>
       </Typography>
       <Avatar
         src={img}
@@ -72,6 +74,7 @@ function MyAppBar({
           onClick={() => setMissonOpen(!missonDrawer)}
           src="/img/startBtn.jpg"
           sx={{ width: 30, height: 30 }}
+          alt="toggle button that open misson"
         />
       </ThemeProvider>
       <DonateList state={donatelistDrawer} setState={setDonateListOpen} />

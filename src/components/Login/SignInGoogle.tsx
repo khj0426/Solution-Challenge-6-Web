@@ -17,9 +17,11 @@ export const SigninGoogle = () => {
 
   const handleLogin = async () => {
     const googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters({
+      prompt: 'select_account',
+    });
     await signInWithPopup(auth, googleProvider)
       .then((res) => {
-        console.log(res.user.getIdToken());
         if (res.user.email && res.user.displayName) {
           const username = res.user.displayName;
           const email = res.user.email;

@@ -37,6 +37,7 @@ export const MissonSuccess = () => {
         {modal && true ? (
           <DonateModal state={modal} setState={setModal} />
         ) : null}
+
         <Image
           style={{ objectFit: 'cover', display: 'block' }}
           src="/img/success.png"
@@ -124,7 +125,7 @@ const StyledSection = styled.section<{ state: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 350px;

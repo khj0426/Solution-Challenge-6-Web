@@ -1,10 +1,14 @@
 import type { Props } from '../Mission';
 import { Modal, Box } from '@mui/material';
 import styled from 'styled-components';
+import { useState } from 'react';
+import { SurfaceComponent } from '../../../components/WorldBank/Surface';
 import Image from 'next/image';
 const DonateList = ({ state, setState }: Props) => {
+  const [modal, setOpenModal] = useState<boolean>(false);
   return (
     <>
+      {modal === true ? <SurfaceComponent /> : null}
       <Modal
         aria-labelledby="modal-modal-title"
         open={state}
@@ -24,14 +28,15 @@ const DonateList = ({ state, setState }: Props) => {
                 ></Image>
                 <div>Country</div>
               </DonateText>
-              <DonateText>
+              <DonateText onClick={() => setOpenModal(!modal)}>
                 <Image
                   src="/img/donatelist2.png"
                   alt="donate list second item"
                   width={50}
                   height={50}
                 ></Image>
-                <div>Category</div>
+
+                <div>Surface Area</div>
               </DonateText>
             </DonateImgArea>
             <DonateTitle style={{ marginTop: '30px' }}>Sponser</DonateTitle>
@@ -112,6 +117,7 @@ const DonateTitle = styled.h6`
 
 const DonateText = styled.div`
   display: flex;
+  cursor: pointer;
   flex-direction: column;
   font-size: 13px;
   align-items: center;

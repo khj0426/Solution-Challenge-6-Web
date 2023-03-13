@@ -9,6 +9,7 @@ const DonateList = ({ state, setState }: Props) => {
         aria-labelledby="modal-modal-title"
         open={state}
         onClose={() => setState(!state)}
+        style={{ width: '320px', margin: '0 auto' }}
       >
         <Box>
           <DonateModal style={{ background: '#fff' }}>

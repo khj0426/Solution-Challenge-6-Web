@@ -6,7 +6,6 @@ import {
   Typography,
   Dialog,
   DialogContent,
-  Button,
 } from '@mui/material';
 import newStore from '../Store/module';
 import { SigninGoogle } from '../Login/SignInGoogle';
@@ -40,7 +39,6 @@ export default function LoginModal() {
             },
           }}
         >
-          <Button onClick={modalOff}>X</Button>
           <DialogContent>
             <Card
               sx={{ maxWidth: 500 }}
@@ -81,4 +79,5 @@ const ModalPosition = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  opacity: 0;
 `;

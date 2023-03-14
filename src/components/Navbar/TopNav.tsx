@@ -97,7 +97,7 @@ function MyAppBar({
 
 const StyledUserPoint = styled.div`
   background: #ffffff;
-  width: 140px;
+  width: 100px;
   margin: 0 auto;
   cursor: pointer;
   display: flex;

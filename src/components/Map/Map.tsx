@@ -71,6 +71,12 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
           center,
           zoom: 5,
           minZoom: 4,
+          scaleControl: false,
+          scrollwheel: false,
+          streetViewControl: false,
+          zoomControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
           styles: mode === lightTheme ? lightStyle : darkStyle,
         })
       );

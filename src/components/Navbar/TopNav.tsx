@@ -51,7 +51,6 @@ function MyAppBar({
         display: 'flex',
         gap: '5px',
         height: 'auto',
-        marginTop: '50px',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',

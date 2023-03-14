@@ -11,6 +11,9 @@ import { active } from '../Store/module/globalmodal';
 import { useRouter } from 'next/router';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DonateList from '../Mission/Donate/DonateList';
+import styled from 'styled-components';
+import Image from 'next/image';
+
 export type propsFunction = () => void;
 function MyAppBar({
   onChangeTheme,
@@ -54,6 +57,15 @@ function MyAppBar({
         position: 'absolute',
       }}
     >
+      <StyledUserPoint>
+        <Image
+          src="/img/point.png"
+          alt="유저의 포인트"
+          width={30}
+          height={30}
+        />
+        <span>680P</span>
+      </StyledUserPoint>
       <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
         <FormatListBulletedIcon style={{ color: '#fff', cursor: 'pointer' }} />
       </div>
@@ -83,4 +95,16 @@ function MyAppBar({
   );
 }
 
+const StyledUserPoint = styled.div`
+  background: #ffffff;
+  width: 140px;
+  margin: 0 auto;
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+`;
 export default MyAppBar;

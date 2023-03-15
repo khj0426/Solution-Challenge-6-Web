@@ -1,9 +1,10 @@
 import { Card, CardContent, Typography, Avatar } from '@mui/material';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect, memo } from 'react';
 import styled, { css } from 'styled-components';
 import { TypeMission } from './Mission';
 import { setLatLng } from '../Store/module/misson/latandlng';
 import { useDispatch } from 'react-redux';
+
 const MissionDetail = ({
   setAction,
   target,
@@ -18,6 +19,12 @@ const MissionDetail = ({
   const dispatch = useDispatch();
 
   const [score, showScore] = useState<boolean>(false);
+  useEffect(() => {
+    if (target === false) {
+      showScore(false);
+    }
+  }, [target]);
+
   return (
     <>
       <Card
@@ -53,7 +60,7 @@ const MissionDetail = ({
                 gap: '5px',
               }}
             >
-              {score === false ? (
+              {score === false && (
                 <Typography
                   style={{
                     marginRight: 'auto',
@@ -64,7 +71,9 @@ const MissionDetail = ({
                 >
                   {mission.question}
                 </Typography>
-              ) : (
+              )}
+
+              {score === true && (
                 <StyledScoreActiveDiv>
                   <StyledFilpPoint
                     style={{ fontSize: '13px', fontWeight: '600' }}
@@ -128,4 +137,4 @@ const StyledButTextArea = styled.div<{ state: boolean }>`
   ${({ state }) => state === false && StyledNotSelected}
 `;
 
-export default MissionDetail;
+export default memo(MissionDetail);

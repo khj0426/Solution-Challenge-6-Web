@@ -110,26 +110,12 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
 };
 
 const MapArea = styled.div`
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 1024px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 500px;
-  }
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 95vh;
-  }
 `;
 
 export default MapComponent;

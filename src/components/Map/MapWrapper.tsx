@@ -38,7 +38,7 @@ const StyledMapWrapper = styled.div`
 const StyledMain = styled.main`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   width: 100%;
 `;

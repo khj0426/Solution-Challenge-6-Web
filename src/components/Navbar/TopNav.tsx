@@ -46,51 +46,55 @@ function MyAppBar({
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '5px',
-        height: 'auto',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-      }}
-    >
-      <StyledUserPoint>
-        <Image
-          src="/img/point.png"
-          alt="유저의 포인트"
-          width={30}
-          height={30}
-        />
-        <span>680P</span>
-      </StyledUserPoint>
-      <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
-        <FormatListBulletedIcon style={{ color: '#fff', cursor: 'pointer' }} />
-      </div>
-      {img && true ? <SignOutGoogle /> : null}
-      <Typography>
-        <label>
-          <Switch onChange={() => onChangeTheme()} />
-        </label>
-      </Typography>
-      <Avatar
-        src={img}
-        alt="User Profile Img provided by Google"
-        onClick={HandleClickAvatar}
-        sx={{ width: 30, height: 30 }}
-      />
-      <ThemeProvider theme={DrawerButtonTheme}>
+    <>
+      <div
+        style={{
+          display: 'flex',
+          gap: '5px',
+          height: 'auto',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+        }}
+      >
+        <StyledUserPoint>
+          <Image
+            src="/img/point.png"
+            alt="유저의 포인트"
+            width={30}
+            height={30}
+          />
+          <span>680P</span>
+        </StyledUserPoint>
+        <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
+          <FormatListBulletedIcon
+            style={{ color: '#fff', cursor: 'pointer' }}
+          />
+        </div>
+        {img && true ? <SignOutGoogle /> : null}
+        <Typography>
+          <label>
+            <Switch onChange={() => onChangeTheme()} />
+          </label>
+        </Typography>
         <Avatar
-          onClick={() => setMissonOpen(!missonDrawer)}
-          src="/img/startBtn.jpg"
+          src={img}
+          alt="User Profile Img provided by Google"
+          onClick={HandleClickAvatar}
           sx={{ width: 30, height: 30 }}
-          alt="toggle button that open misson"
         />
-      </ThemeProvider>
-      <DonateList state={donatelistDrawer} setState={setDonateListOpen} />
+        <ThemeProvider theme={DrawerButtonTheme}>
+          <Avatar
+            onClick={() => setMissonOpen(!missonDrawer)}
+            src="/img/startBtn.jpg"
+            sx={{ width: 30, height: 30 }}
+            alt="toggle button that open misson"
+          />
+        </ThemeProvider>
+        <DonateList state={donatelistDrawer} setState={setDonateListOpen} />
+      </div>
       <Mission state={missonDrawer} setState={setMissonOpen} />
-    </div>
+    </>
   );
 }
 

@@ -9,25 +9,21 @@ import {
 } from '@mui/material';
 import newStore from '../Store/module';
 import { SigninGoogle } from '../Login/SignInGoogle';
-import { deactive } from '../Store/module/globalmodal';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function LoginModal() {
-  const dispatch = useDispatch();
   const [open, setOpen] = useState<boolean>(
     newStore.getState().persist.globalModal.modal
   );
-  const modalOff = () => {
-    dispatch(deactive());
-    setOpen(false); // update the state of the dialog
-  };
+
+  useEffect(() => {
+    setOpen(newStore.getState().persist.globalModal.modal);
+  }, [newStore.getState().persist.globalModal.modal]);
 
   return (
     <>
       <ModalPosition>
         <Dialog
-          onClose={modalOff}
           open={open}
           PaperProps={{
             style: {

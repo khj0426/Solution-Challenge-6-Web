@@ -13,6 +13,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DonateList from '../Mission/Donate/DonateList';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 
 export type propsFunction = () => void;
 function MyAppBar({
@@ -50,7 +51,6 @@ function MyAppBar({
       <div
         style={{
           display: 'flex',
-          gap: '5px',
           height: 'auto',
           justifyContent: 'center',
           alignItems: 'center',
@@ -85,9 +85,18 @@ function MyAppBar({
         />
         <ThemeProvider theme={DrawerButtonTheme}>
           <Avatar
-            onClick={() => setMissonOpen(!missonDrawer)}
+            onClick={() => {
+              setMissonOpen(!missonDrawer);
+              dispatch(setMissonNotClear());
+            }}
             src="/img/startBtn.jpg"
-            sx={{ width: 30, height: 30 }}
+            sx={{
+              width: 30,
+              height: 30,
+              position: 'fixed',
+              bottom: '0',
+              right: '0',
+            }}
             alt="toggle button that open misson"
           />
         </ThemeProvider>
@@ -101,7 +110,7 @@ function MyAppBar({
 const StyledUserPoint = styled.div`
   background: #ffffff;
   width: 100px;
-  margin: 0 auto;
+  margin-right: 30px;
   cursor: pointer;
   display: flex;
   font-weight: 500;

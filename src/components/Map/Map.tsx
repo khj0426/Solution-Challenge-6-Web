@@ -8,9 +8,13 @@ import { Theme } from '@mui/material/styles';
 import { lightTheme } from '../../styles/globalmode-style';
 import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
+import { setMissonClear } from '../Store/module/misson/clearMisson';
+import { useDispatch } from 'react-redux';
+
 const MapComponent = ({ mode }: { mode: Theme }) => {
   //미션 성공 여부 전역적으로 관리해야 함
 
+  const dispatch = useDispatch();
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
   const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
@@ -52,6 +56,11 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
         if (boundry?.contains(activepos)) {
           setClear(true);
           swal(msg.sucessMain, msg.successBody, 'success');
+          dispatch(
+            setMissonClear({
+              clear: true,
+            })
+          );
         }
       }
     }
@@ -72,7 +81,6 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
           zoom: 5,
           minZoom: 4,
           scaleControl: false,
-          scrollwheel: false,
           streetViewControl: false,
           zoomControl: false,
           mapTypeControl: false,

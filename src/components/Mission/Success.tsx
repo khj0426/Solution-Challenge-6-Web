@@ -5,18 +5,25 @@ import { useState, useEffect } from 'react';
 import DonateModal from '../Modal/DonateModal';
 import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAnswer } from '../Store/module/misson/answer';
+import { TypeMission } from './Mission';
+
 export const MissonSuccess = () => {
   type newMisson = {
     category: string;
     content: string;
-    imgUrl: string;
+    img_url: string;
     question: string;
   };
+
+  const dispatch = useDispatch();
   const [modal, setModal] = useState<boolean>(false);
   const [data, setData] = useState<newMisson>({
     category: '',
     content: '',
-    imgUrl: '',
+    img_url: '',
     question: '',
   });
 
@@ -29,7 +36,20 @@ export const MissonSuccess = () => {
       setData(response.data);
     };
 
-    fetchData();
+    const fetchMissions = async () => {
+      const { data, status } = await axios.get('api/main', {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        },
+      });
+      if (status === 200) {
+        dispatch(setAnswer(data));
+      }
+    };
+
+    fetchData().then(() => {
+      fetchMissions();
+    });
   }, []);
   return (
     <>
@@ -40,7 +60,7 @@ export const MissonSuccess = () => {
 
         <Image
           style={{ objectFit: 'cover', display: 'block' }}
-          src="/img/success.png"
+          src={data.img_url}
           alt="misson success image"
           height={300}
           width={350}

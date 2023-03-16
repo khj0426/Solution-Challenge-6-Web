@@ -14,7 +14,7 @@ export const MissonSuccess = () => {
   type newMisson = {
     category: string;
     content: string;
-    img_url: string;
+    imgUrl: string;
     question: string;
   };
 
@@ -23,7 +23,7 @@ export const MissonSuccess = () => {
   const [data, setData] = useState<newMisson>({
     category: '',
     content: '',
-    img_url: '',
+    imgUrl: '',
     question: '',
   });
 
@@ -60,7 +60,7 @@ export const MissonSuccess = () => {
 
         <Image
           style={{ objectFit: 'cover', display: 'block' }}
-          src={data.img_url}
+          src={data.imgUrl}
           alt="misson success image"
           height={300}
           width={350}

@@ -9,6 +9,10 @@ export default function Document() {
           name="Bep"
           content="세상의 문제들의 인식개선을 돕기 위한 기부 플랫폼"
         />
+        <meta
+          name="google-site-verification"
+          content="g3Daim29whdK1ZzL1CE6pvkYyvSgM5-6C898-TVjiz0"
+        />
       </Head>
 
       <body>

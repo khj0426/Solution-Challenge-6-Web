@@ -16,12 +16,11 @@ const globalLatLng = createSlice({
   name: 'LatLng',
   initialState: initalState,
   reducers: {
-    setLatLng(state, action: PayloadAction<missonType>) {
-      return {
-        lat: action.payload.lat,
-        lng: action.payload.lng,
-        id: action.payload.id,
-      };
+    setLatLng: (state, action: PayloadAction<missonType>) => {
+      const { id, lat, lng } = action.payload;
+      state.id = id;
+      state.lat = lat;
+      state.lng = lng;
     },
   },
 });

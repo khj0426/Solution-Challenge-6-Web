@@ -1,16 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+    domains: ['*'],
+  },
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
     return [
       {
-        source: 'api/main',
+        source: '/api/main',
         destination: 'https://bepserver.duckdns.org/main',
       },
 
       {
-        source: 'api/main/:path*',
+        source: '/api/main/:path*',
         destination: 'https://bepserver.duckdns.org/main/:path*',
       },
     ];

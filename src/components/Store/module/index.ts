@@ -6,6 +6,7 @@ import sessionStorage from 'redux-persist/lib/storage/session';
 import globalLatLng from './misson/latandlng';
 import missonClearFlag from './misson/clearMisson';
 import missonAnswer from './misson/answer';
+import { encryptTransform } from 'redux-persist-transform-encrypt';
 
 const reducers = combineReducers({
   globalModal: globalmodalState.reducer,
@@ -19,6 +20,14 @@ const persistConfig = {
   storage: sessionStorage,
   whilelist: ['user'],
   timeout: 1800000,
+  transforms: [
+    encryptTransform({
+      secretKey: 'secret-key',
+      onError: function () {
+        console.log('encryption error:');
+      },
+    }),
+  ],
 };
 
 const persist = persistReducer(persistConfig, reducers);
@@ -28,6 +37,7 @@ const makeStore = () => {
     reducer: {
       persist,
     },
+
     middleware: (defaultMiddleware) =>
       defaultMiddleware({
         serializableCheck: false,

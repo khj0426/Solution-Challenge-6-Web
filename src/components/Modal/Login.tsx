@@ -30,7 +30,6 @@ export default function LoginModal() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              border: '1px solid #AAAAAA',
               borderRadius: '20px',
             },
           }}
@@ -45,10 +44,17 @@ export default function LoginModal() {
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
+                boxShadow: 'none',
               }}
             >
-              <Typography variant="h3" component="div">
-                Bep
+              <Typography
+                variant="h3"
+                component="div"
+                style={{
+                  fontWeight: '700',
+                }}
+              >
+                BeP
               </Typography>
               <CardMedia
                 sx={{ height: 200, width: 200 }}

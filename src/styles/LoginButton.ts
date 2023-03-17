@@ -15,7 +15,7 @@ const loginBtntheme = createTheme({
           },
 
           style: {
-            border: '1px solid #fff',
+            border: '1px solud #AAAAAA',
             cursor: 'pointer',
             backgroundColor: '#ffffff',
             backgroundImage: 'url("/img/googleLogin.png")',

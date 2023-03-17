@@ -39,6 +39,7 @@ const getAccessToken = ({
 
     if (resData.status === 200) {
       sessionStorage.setItem('accessToken', resData.data.accessToken);
+      sessionStorage.setItem('userPoint',resData.data.userPoint);
     }
   };
 

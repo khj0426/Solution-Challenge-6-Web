@@ -9,6 +9,7 @@ const SignOutGoogle = () => {
     await signOut(auth).then(async () => {
       sessionStorage.removeItem('imgURL');
       sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('userPoint');
     });
     router.reload();
   };

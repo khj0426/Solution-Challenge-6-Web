@@ -64,7 +64,9 @@ function MyAppBar({
             width={30}
             height={30}
           />
-          <span>680P</span>
+          <span style={{ color: 'black' }}>
+            {sessionStorage.getItem('userPoint')}
+          </span>
         </StyledUserPoint>
         <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
           <FormatListBulletedIcon
@@ -110,9 +112,11 @@ function MyAppBar({
 const StyledUserPoint = styled.div`
   background: #ffffff;
   width: 100px;
-  margin-right: 30px;
   cursor: pointer;
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   font-weight: 500;
   justify-content: space-around;
   align-items: center;

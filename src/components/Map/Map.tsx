@@ -18,7 +18,7 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
   const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
-
+  const [drag, setIsDragging] = useState<boolean>(false);
   const [clear, setClear] = useState<boolean>(false);
 
   //set new Marker in new Position
@@ -48,10 +48,13 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     };
 
     if (map) {
-      map.setZoom(10);
+      map.setZoom(15);
       const newPos = marker?.getPosition();
       if (typeof newPos !== 'undefined' && newPos !== null) {
         map.panTo(newPos);
+      }
+
+      if (typeof newPos !== 'undefined' && newPos !== null) {
         const boundry = map.getBounds();
         if (boundry?.contains(activepos)) {
           setClear(true);
@@ -91,13 +94,29 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
     }
 
     if (map) {
+      google.maps.event.addListener(
+        map,
+        'dragstart',
+        (e: google.maps.MapMouseEvent) => {
+          setIsDragging(true);
+        }
+      );
+
+      google.maps.event.addListener(
+        map,
+        'dragend',
+        (e: google.maps.MapMouseEvent) => {
+          setIsDragging(false);
+        }
+      );
+
       map.setOptions({ styles: mode === lightTheme ? lightStyle : darkStyle });
       google.maps.event.addListener(
         map,
         'click',
         (e: google.maps.MapMouseEvent) => {
           const pos = e.latLng?.toJSON();
-          if (pos && true) {
+          if (pos && true && drag === false) {
             setPosition(pos);
             setMark({ pos, map });
             setClear(false);

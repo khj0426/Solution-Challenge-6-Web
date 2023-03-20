@@ -4,11 +4,17 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { SurfaceComponent } from '../../../components/WorldBank/Surface';
 import Image from 'next/image';
+import { Co2EmissionComponent } from '../../../components/WorldBank/Co2';
+
 const DonateList = ({ state, setState }: Props) => {
-  const [modal, setOpenModal] = useState<boolean>(false);
+  const [surfacemodal, setOpenSurfaceModal] = useState<boolean>(false);
+  const [co2modal, setOpenCo2Modal] = useState<boolean>(false);
   return (
     <>
-      {modal === true ? <SurfaceComponent /> : null}
+      {surfacemodal === true ? <SurfaceComponent /> : null}
+      {co2modal === true && surfacemodal === false ? (
+        <Co2EmissionComponent />
+      ) : null}
       <Modal
         aria-labelledby="modal-modal-title"
         open={state}
@@ -28,7 +34,7 @@ const DonateList = ({ state, setState }: Props) => {
                 ></Image>
                 <div>Country</div>
               </DonateText>
-              <DonateText onClick={() => setOpenModal(!modal)}>
+              <DonateText onClick={() => setOpenSurfaceModal(!surfacemodal)}>
                 <Image
                   src="/img/donatelist2.png"
                   alt="donate list second item"
@@ -43,12 +49,12 @@ const DonateList = ({ state, setState }: Props) => {
             <DonateImgArea>
               <DonateText>
                 <Image
-                  src="/img/donatelist3.png"
-                  alt="donate list third item"
+                  src="/img/donatelist7.png"
+                  alt="donate list last item"
                   width={50}
                   height={50}
                 ></Image>
-                <div>Vodafone</div>
+                <div>ChildFund</div>
               </DonateText>
               <DonateText>
                 <Image
@@ -68,23 +74,24 @@ const DonateList = ({ state, setState }: Props) => {
                 ></Image>
                 <div>Red Cross</div>
               </DonateText>
-              <DonateText>
-                <Image
-                  src="/img/donatelist6.png"
-                  alt="donate list six item"
-                  width={50}
-                  height={50}
-                ></Image>
-                <div>Doctors Without Borders</div>
-              </DonateText>
+              x
               <DonateText>
                 <Image
                   src="/img/donatelist7.png"
-                  alt="donate list last item"
+                  alt="donate list seven item"
                   width={50}
                   height={50}
                 ></Image>
                 <div>ChildFund</div>
+              </DonateText>
+              <DonateText onClick={() => setOpenCo2Modal(!co2modal)}>
+                <Image
+                  src="/img/donatelist8.png"
+                  alt="donate list last item"
+                  width={50}
+                  height={50}
+                ></Image>
+                <div>CO2</div>
               </DonateText>
             </DonateImgArea>
           </DonateModal>

@@ -5,10 +5,8 @@ import { useState, useEffect } from 'react';
 import DonateModal from '../Modal/DonateModal';
 import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setAnswer } from '../Store/module/misson/answer';
-import { TypeMission } from './Mission';
+import { setMissonClear } from '../Store/module/misson/clearMisson';
 
 export const MissonSuccess = () => {
   type newMisson = {
@@ -19,6 +17,7 @@ export const MissonSuccess = () => {
   };
 
   const dispatch = useDispatch();
+
   const [modal, setModal] = useState<boolean>(false);
   const [data, setData] = useState<newMisson>({
     category: '',
@@ -32,24 +31,15 @@ export const MissonSuccess = () => {
       const id = newStore.getState().persist.globalLatLng.id + '';
       const response = await getNewMisson({ id });
       /*에러 핸들링 추가 할 부분 */
-
       setData(response.data);
     };
 
-    const fetchMissions = async () => {
-      const { data, status } = await axios.get('api/main', {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-        },
-      });
-      if (status === 200) {
-        dispatch(setAnswer(data));
-      }
-    };
-
-    fetchData().then(() => {
-      fetchMissions();
-    });
+    fetchData();
+    dispatch(
+      setMissonClear({
+        clear: true,
+      })
+    );
   }, []);
   return (
     <>

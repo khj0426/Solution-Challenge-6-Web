@@ -118,7 +118,7 @@ const StyledUserPoint = styled.div`
   top: 0;
   left: 0;
   font-weight: 500;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 24px;

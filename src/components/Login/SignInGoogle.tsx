@@ -48,7 +48,7 @@ export const SigninGoogle = () => {
           variant="text"
           color="inherit"
           onClick={() => {
-            handleLogin().then(() => router.push(router.asPath));
+            handleLogin().then(() => router.push('/Main'));
           }}
         ></Button>
       </ThemeProvider>

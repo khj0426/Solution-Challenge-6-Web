@@ -44,6 +44,7 @@ export const SigninGoogle = () => {
     <>
       <ThemeProvider theme={loginBtntheme}>
         <Button
+          name="google login button"
           variant="text"
           color="inherit"
           onClick={() => {

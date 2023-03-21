@@ -5,6 +5,7 @@ import Map from '../components/Map/MapWrapper';
 import LoginModal from '../components/Modal/Login';
 import newStore from '../components/Store/module';
 import styled from 'styled-components';
+
 export default function Home() {
   const [mode, setMode] = useState<Theme>(lightTheme);
   const onChangeTheme: () => void = () => {

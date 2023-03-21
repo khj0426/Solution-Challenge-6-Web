@@ -13,7 +13,6 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DonateList from '../Mission/Donate/DonateList';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 
 export type propsFunction = () => void;
 function MyAppBar({
@@ -89,7 +88,6 @@ function MyAppBar({
           <Avatar
             onClick={() => {
               setMissonOpen(!missonDrawer);
-              dispatch(setMissonNotClear());
             }}
             src="/img/startBtn.jpg"
             sx={{

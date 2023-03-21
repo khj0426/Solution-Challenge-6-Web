@@ -30,11 +30,10 @@ const Mission = ({ state, setState }: Props) => {
 
   useEffect(() => {
     setClear(newStore.getState().persist.missonClear.clear);
-    console.log(clear);
+
     if (clear === true) {
       onClickDrawer();
     }
-
     dispatch(setMissonNotClear());
   }, [newStore.getState().persist.missonClear.clear]);
 
@@ -79,7 +78,6 @@ const Mission = ({ state, setState }: Props) => {
       };
 
       fetchMissions();
-      console.log('미션끝');
     }
   };
 
@@ -99,7 +97,6 @@ const Mission = ({ state, setState }: Props) => {
         },
       }}
       anchor="bottom"
-      onClick={onClickDrawer}
       open={state}
       onClose={() => setState(false)}
     >

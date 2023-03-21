@@ -2,16 +2,12 @@ import { useRef, useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import styled from 'styled-components';
 import { msg } from '../../constants/mapConstants';
-import lightStyle from '../../styles/mapStyle.json';
-import darkStyle from '../../styles/darkmapStyle.json';
-import { Theme } from '@mui/material/styles';
-import { lightTheme } from '../../styles/globalmode-style';
 import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
 import { useDispatch } from 'react-redux';
 
-const MapComponent = ({ mode }: { mode: Theme }) => {
+const MapComponent = () => {
   //미션 성공 여부 전역적으로 관리해야 함
 
   const dispatch = useDispatch();
@@ -88,7 +84,6 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
           zoomControl: false,
           mapTypeControl: false,
           fullscreenControl: false,
-          styles: mode === lightTheme ? lightStyle : darkStyle,
         })
       );
     }
@@ -110,7 +105,6 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
         }
       );
 
-      map.setOptions({ styles: mode === lightTheme ? lightStyle : darkStyle });
       google.maps.event.addListener(
         map,
         'click',
@@ -126,7 +120,7 @@ const MapComponent = ({ mode }: { mode: Theme }) => {
         }
       );
     }
-  }, [ref, map, marker, mode]);
+  }, [ref, map, marker]);
 
   return (
     <>

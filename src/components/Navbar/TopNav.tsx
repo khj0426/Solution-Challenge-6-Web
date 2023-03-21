@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Avatar } from '@mui/material';
 import SignOutGoogle from '../Logout/SignoutGoogle';
 import { user } from '../../constants/mapConstants';
-import { Theme, ThemeProvider } from '@mui/material/styles';
-import { Switch } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+
 import Mission from '../Mission/Mission';
 import DrawerButtonTheme from '../../styles/DrawerButton';
 import { useDispatch } from 'react-redux';
@@ -15,15 +15,10 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 export type propsFunction = () => void;
-function MyAppBar({
-  onChangeTheme,
-}: {
-  mode: Theme;
-  onChangeTheme: propsFunction;
-}) {
+function MyAppBar() {
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const [userpoint, setUserPoint] = useState<number>();
   const [img, setImg] = useState<string | undefined>('');
   const [missonDrawer, setMissonOpen] = useState<boolean>(false);
   const [donatelistDrawer, setDonateListOpen] = useState<boolean>(false);
@@ -37,6 +32,13 @@ function MyAppBar({
     typeof window !== 'undefined' && sessionStorage.getItem(user.userimgURL),
   ]);
 
+  useEffect(() => {
+    const point = sessionStorage.getItem('userPoint');
+    if (point !== null) {
+      setUserPoint(parseInt(point));
+    }
+  }, [sessionStorage.getItem('userPoint')]);
+
   const HandleClickAvatar = () => {
     if (sessionStorage.getItem(user.userimgURL) && true) {
       return;
@@ -49,6 +51,8 @@ function MyAppBar({
     <>
       <div
         style={{
+          marginRight: '20px',
+          marginBottom: '20px',
           display: 'flex',
           height: 'auto',
           justifyContent: 'center',
@@ -63,9 +67,7 @@ function MyAppBar({
             width={30}
             height={30}
           />
-          <span style={{ color: 'black' }}>
-            {sessionStorage.getItem('userPoint')}
-          </span>
+          <span style={{ color: 'black' }}>{userpoint}</span>
         </StyledUserPoint>
         <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
           <FormatListBulletedIcon
@@ -73,11 +75,7 @@ function MyAppBar({
           />
         </div>
         {img && true ? <SignOutGoogle /> : null}
-        <Typography>
-          <label>
-            <Switch onChange={() => onChangeTheme()} />
-          </label>
-        </Typography>
+        <Typography></Typography>
         <Avatar
           src={img}
           alt="User Profile Img provided by Google"
@@ -96,6 +94,8 @@ function MyAppBar({
               position: 'fixed',
               bottom: '0',
               right: '0',
+              marginRight: '20px',
+              marginBottom: '20px',
             }}
             alt="toggle button that open misson"
           />
@@ -112,9 +112,6 @@ const StyledUserPoint = styled.div`
   width: 100px;
   cursor: pointer;
   display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
   font-weight: 500;
   justify-content: space-between;
   align-items: center;

@@ -14,6 +14,7 @@ export const MissonSuccess = () => {
     content: string;
     imgUrl: string;
     question: string;
+    userPoint: number;
   };
 
   const dispatch = useDispatch();
@@ -24,9 +25,25 @@ export const MissonSuccess = () => {
     content: '',
     imgUrl: '',
     question: '',
+    userPoint: 0,
   });
 
+  const upDateSumofPoint = ({ newpoint }: { newpoint: number }) => {
+    const userPoint = sessionStorage.getItem('userPoint');
+
+    if (userPoint !== null) {
+      parseInt(userPoint);
+      const newUserPoint = userPoint + newpoint;
+      return newUserPoint;
+    } else {
+      if (userPoint !== null) {
+        return parseInt(userPoint);
+      }
+    }
+  };
+
   useEffect(() => {
+    console.log(upDateSumofPoint({ newpoint: 1 }));
     const fetchData = async () => {
       const id = newStore.getState().persist.globalLatLng.id + '';
       const response = await getNewMisson({ id });
@@ -139,7 +156,7 @@ const StyledSection = styled.section<{ state: boolean }>`
   align-items: center;
   flex-direction: column;
   width: 350px;
-  height: 600px;
+  height: 100vh;
   border-radius: 5px 0px 0px 5px;
   background-color: #ffffff;
   ${({ state }) => state === true && backOpacityNone}

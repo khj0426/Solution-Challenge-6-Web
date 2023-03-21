@@ -24,9 +24,4 @@ const StyledModalMain = styled.div`
   z-index: 10;
 `;
 
-const StyledH2 = styled.h2`
-  font-weight: 700;
-  font-size: 24px;
-`;
-
 export default DonateModal;

@@ -2,23 +2,15 @@ import { Wrapper } from '@googlemaps/react-wrapper';
 import MapComponent from './Map';
 import styled from 'styled-components';
 import { memo } from 'react';
-import { Theme } from '@mui/material/styles';
 import MyAppBar from '../Navbar/TopNav';
-import { propsFunction } from '../Navbar/TopNav';
-const Map = ({
-  mode,
-  onChangeTheme,
-}: {
-  mode: Theme;
-  onChangeTheme: propsFunction;
-}) => {
+const Map = () => {
   if (process.env.NEXT_PUBLIC_MAP_KEY)
     return (
       <StyledMain>
         <StyledMapWrapper>
           <Wrapper apiKey={process.env.NEXT_PUBLIC_MAP_KEY}>
-            <MapComponent mode={mode} />
-            <MyAppBar mode={mode} onChangeTheme={onChangeTheme} />
+            <MapComponent />
+            <MyAppBar />
           </Wrapper>
         </StyledMapWrapper>
       </StyledMain>

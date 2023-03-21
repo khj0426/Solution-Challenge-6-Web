@@ -11,7 +11,8 @@ const SignOutGoogle = () => {
       sessionStorage.removeItem('accessToken');
       sessionStorage.removeItem('userPoint');
     });
-    router.reload();
+
+    router.push('/');
   };
   return (
     <Button

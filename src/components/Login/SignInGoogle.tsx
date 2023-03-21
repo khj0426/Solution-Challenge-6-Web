@@ -2,19 +2,16 @@ import { auth } from '../../api/instance/firebase';
 import 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import swal from 'sweetalert';
-import { msg, user } from '../../constants/mapConstants';
+import { user } from '../../constants/mapConstants';
 import { getAccessToken } from '../../api/authorization';
 import loginBtntheme from '../../styles/LoginButton';
 import { ThemeProvider, Button } from '@mui/material';
 import { deactive } from '../Store/module/globalmodal';
-
 import { useRouter } from 'next/router';
 
 export const SigninGoogle = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
   const handleLogin = async () => {
     const googleProvider = new GoogleAuthProvider();
     googleProvider.setCustomParameters({
@@ -32,8 +29,9 @@ export const SigninGoogle = () => {
             res.user.photoURL as string
           );
         }
-        swal(msg.loginsuccess, msg.loginsuccessBody, 'success');
+
         dispatch(deactive());
+        router.push('/Main');
       })
       .catch((err) => {
         return err;
@@ -48,7 +46,7 @@ export const SigninGoogle = () => {
           variant="text"
           color="inherit"
           onClick={() => {
-            handleLogin().then(() => router.push('/Main'));
+            handleLogin();
           }}
         ></Button>
       </ThemeProvider>

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Avatar } from '@mui/material';
-import SignOutGoogle from '../Logout/SignoutGoogle';
 import { user } from '../../constants/mapConstants';
 import { ThemeProvider } from '@mui/material/styles';
-
 import Mission from '../Mission/Mission';
 import DrawerButtonTheme from '../../styles/DrawerButton';
 import { useDispatch } from 'react-redux';
@@ -18,7 +16,7 @@ export type propsFunction = () => void;
 function MyAppBar() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [userpoint, setUserPoint] = useState<number>();
+  const [userpoint, setUserPoint] = useState<number>(0);
   const [img, setImg] = useState<string | undefined>('');
   const [missonDrawer, setMissonOpen] = useState<boolean>(false);
   const [donatelistDrawer, setDonateListOpen] = useState<boolean>(false);
@@ -58,6 +56,7 @@ function MyAppBar() {
           justifyContent: 'center',
           alignItems: 'center',
           position: 'absolute',
+          gap: '5px',
         }}
       >
         <StyledUserPoint>
@@ -74,7 +73,7 @@ function MyAppBar() {
             style={{ color: '#fff', cursor: 'pointer' }}
           />
         </div>
-        {img && true ? <SignOutGoogle /> : null}
+
         <Typography></Typography>
         <Avatar
           src={img}

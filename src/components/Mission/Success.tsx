@@ -28,27 +28,32 @@ export const MissonSuccess = () => {
     userPoint: 0,
   });
 
-  const upDateSumofPoint = ({ newpoint }: { newpoint: number }) => {
+  const upDateSumofPoint = ({ newpoint }: { newpoint: string }): string => {
     const userPoint = sessionStorage.getItem('userPoint');
-
     if (userPoint !== null) {
       parseInt(userPoint);
-      const newUserPoint = userPoint + newpoint;
-      return newUserPoint;
+      const newUserPoint = userPoint + parseInt(newpoint);
+      return newUserPoint + '';
     } else {
       if (userPoint !== null) {
-        return parseInt(userPoint);
+        return userPoint + '';
       }
     }
+
+    return '';
   };
 
   useEffect(() => {
-    console.log(upDateSumofPoint({ newpoint: 1 }));
     const fetchData = async () => {
       const id = newStore.getState().persist.globalLatLng.id + '';
       const response = await getNewMisson({ id });
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);
+      const { userPoint } = response.data;
+      sessionStorage.setItem(
+        'userPoint',
+        upDateSumofPoint({ newpoint: userPoint })
+      );
     };
 
     fetchData();

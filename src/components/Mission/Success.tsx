@@ -28,21 +28,6 @@ export const MissonSuccess = () => {
     userPoint: 0,
   });
 
-  const upDateSumofPoint = ({ newpoint }: { newpoint: string }): string => {
-    const userPoint = sessionStorage.getItem('userPoint');
-    if (userPoint !== null) {
-      parseInt(userPoint);
-      const newUserPoint = userPoint + parseInt(newpoint);
-      return newUserPoint + '';
-    } else {
-      if (userPoint !== null) {
-        return userPoint + '';
-      }
-    }
-
-    return '';
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       const id = newStore.getState().persist.globalLatLng.id + '';
@@ -50,10 +35,7 @@ export const MissonSuccess = () => {
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);
       const { userPoint } = response.data;
-      sessionStorage.setItem(
-        'userPoint',
-        upDateSumofPoint({ newpoint: userPoint })
-      );
+      sessionStorage.setItem('userPoint', userPoint + '');
     };
 
     fetchData();
@@ -74,7 +56,7 @@ export const MissonSuccess = () => {
           style={{ objectFit: 'cover', display: 'block' }}
           src={data.imgUrl}
           alt="misson success image"
-          height={300}
+          height={350}
           width={350}
         />
 

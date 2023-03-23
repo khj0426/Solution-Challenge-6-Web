@@ -6,7 +6,7 @@ import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
 import { useDispatch } from 'react-redux';
-
+import mapstyle from '../../styles/mapStyle.json';
 const MapComponent = () => {
   //미션 성공 여부 전역적으로 관리해야 함
 
@@ -44,7 +44,6 @@ const MapComponent = () => {
     };
 
     if (map) {
-      map.setZoom(15);
       const newPos = marker?.getPosition();
       if (typeof newPos !== 'undefined' && newPos !== null) {
         map.panTo(newPos);
@@ -53,6 +52,7 @@ const MapComponent = () => {
       if (typeof newPos !== 'undefined' && newPos !== null) {
         const boundry = map.getBounds();
         if (boundry?.contains(activepos)) {
+          map.setZoom(15);
           setClear(true);
           swal(msg.sucessMain, msg.successBody, 'success');
           dispatch(
@@ -84,6 +84,7 @@ const MapComponent = () => {
           zoomControl: false,
           mapTypeControl: false,
           fullscreenControl: false,
+          styles: mapstyle,
         })
       );
     }
@@ -125,6 +126,7 @@ const MapComponent = () => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
+
       {clear && true ? <MissonSuccess /> : null}
     </>
   );

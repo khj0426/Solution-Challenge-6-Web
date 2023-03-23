@@ -66,7 +66,7 @@ function MyAppBar() {
             width={30}
             height={30}
           />
-          <span style={{ color: 'black' }}>{userpoint}</span>
+          <span style={{ color: 'black', fontWeight: '700' }}>{userpoint}</span>
         </StyledUserPoint>
         <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
           <FormatListBulletedIcon
@@ -108,7 +108,8 @@ function MyAppBar() {
 
 const StyledUserPoint = styled.div`
   background: #ffffff;
-  width: 100px;
+  width: 130px;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   font-weight: 500;

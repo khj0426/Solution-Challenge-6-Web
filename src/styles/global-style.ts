@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     font-weight: 100;
     text-align: center;
-    background-color: #E0E0E0;
+    background-color: #ffffff;
   }
   html, 
   h1, 

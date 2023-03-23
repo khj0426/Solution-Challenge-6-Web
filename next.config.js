@@ -9,6 +9,9 @@ const nextConfig = {
     ],
     domains: ['*'],
   },
+  compiler: {
+    styledComponents: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {

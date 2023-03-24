@@ -6,7 +6,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { DonateModalBtn } from '../Button/DonateModalBtn';
 import { DonateModalCencelBtn } from '../Button/DonateCancelBtn';
 import { Donate } from '../../api/getDonationPoints';
-
+import { DonatePoint } from '../../api/donatePoint';
 type DonateProps = DonateModalState & {
   category: string;
 };
@@ -38,7 +38,12 @@ const DonateModal = ({ state, setState, category }: DonateProps) => {
           </DonateNumber>
         </DonatePointArea>
         <DonateButArea>
-          <DonateModalCencelBtn /> <DonateModalBtn onClick={() => Donate()} />
+          <DonateModalCencelBtn />
+          <DonateModalBtn
+            onClick={() =>
+              DonatePoint({ category, donationPoint: donatePoint })
+            }
+          />
         </DonateButArea>
       </DonateModalArea>
     </>

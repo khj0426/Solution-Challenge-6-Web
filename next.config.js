@@ -27,10 +27,6 @@ const nextConfig = {
       },
 
       {
-        source: '/api/main/donation',
-        destination: 'https://bepserver.duckdns.org/main/donations',
-      },
-      {
         source: '/main/donation/categories',
         destination: 'https://bepserver.duckdns.org/main/donations/categories',
       },

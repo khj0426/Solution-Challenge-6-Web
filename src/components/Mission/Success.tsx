@@ -49,7 +49,11 @@ export const MissonSuccess = () => {
     <>
       <StyledSection state={modal}>
         {modal && true ? (
-          <DonateModal state={modal} setState={setModal} />
+          <DonateModal
+            state={modal}
+            setState={setModal}
+            category={data.category}
+          />
         ) : null}
 
         <Image

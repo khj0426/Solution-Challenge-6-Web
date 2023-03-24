@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const DonateModalBtn = () => {
+export const DonateModalBtn = ({ onClick }: { onClick: () => void }) => {
   return (
     <>
-      <DonateModalbut>Yes</DonateModalbut>
+      <DonateModalbut onClick={onClick}>Yes</DonateModalbut>
     </>
   );
 };

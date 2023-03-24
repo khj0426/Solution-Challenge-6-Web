@@ -5,7 +5,13 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { DonateModalBtn } from '../Button/DonateModalBtn';
 import { DonateModalCencelBtn } from '../Button/DonateCancelBtn';
-const DonateModal = ({ state, setState }: DonateModalState) => {
+import { Donate } from '../../api/getDonationPoints';
+
+type DonateProps = DonateModalState & {
+  category: string;
+};
+
+const DonateModal = ({ state, setState, category }: DonateProps) => {
   const [donatePoint, setDonatePoint] = useState<number>(100);
   const minusClickAction: () => void = () => {
     if (donatePoint >= 100) {
@@ -32,7 +38,7 @@ const DonateModal = ({ state, setState }: DonateModalState) => {
           </DonateNumber>
         </DonatePointArea>
         <DonateButArea>
-          <DonateModalCencelBtn /> <DonateModalBtn />
+          <DonateModalCencelBtn /> <DonateModalBtn onClick={() => Donate()} />
         </DonateButArea>
       </DonateModalArea>
     </>

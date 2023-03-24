@@ -50,13 +50,11 @@ function MyAppBar() {
       <div
         style={{
           marginRight: '20px',
-          marginBottom: '20px',
           display: 'flex',
-          height: 'auto',
           justifyContent: 'center',
           alignItems: 'center',
           position: 'absolute',
-          gap: '5px',
+          gap: '6px',
         }}
       >
         <StyledUserPoint>
@@ -68,9 +66,15 @@ function MyAppBar() {
           />
           <span style={{ color: 'black', fontWeight: '700' }}>{userpoint}</span>
         </StyledUserPoint>
-        <div onClick={() => setDonateListOpen(!donatelistDrawer)}>
-          <FormatListBulletedIcon
-            style={{ color: '#fff', cursor: 'pointer' }}
+        <div
+          style={{ cursor: 'pointer' }}
+          onClick={() => setDonateListOpen(!donatelistDrawer)}
+        >
+          <Image
+            src="/img/Menu.png"
+            alt="Top Menu Image"
+            width={30}
+            height={30}
           />
         </div>
 
@@ -79,7 +83,7 @@ function MyAppBar() {
           src={img}
           alt="User Profile Img provided by Google"
           onClick={HandleClickAvatar}
-          sx={{ width: 30, height: 30 }}
+          sx={{ width: 32, height: 32 }}
         />
         <ThemeProvider theme={DrawerButtonTheme}>
           <Avatar

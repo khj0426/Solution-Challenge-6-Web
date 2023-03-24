@@ -22,7 +22,7 @@ export const SigninGoogle = () => {
         if (res.user.email && res.user.displayName) {
           const username = res.user.displayName;
           const email = res.user.email;
-          const password = 'google';
+          const password = res.user.uid;
           getAccessToken({ username, email, password });
           window.sessionStorage.setItem(
             user.userimgURL,

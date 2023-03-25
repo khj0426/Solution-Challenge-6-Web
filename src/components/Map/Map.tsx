@@ -48,11 +48,14 @@ const MapComponent = () => {
       if (typeof newPos !== 'undefined' && newPos !== null) {
         map.panTo(newPos);
       }
-      map.setZoom(15);
+
       if (typeof newPos !== 'undefined' && newPos !== null) {
         const boundry = map.getBounds();
         if (boundry?.contains(activepos)) {
-          marker?.setPosition(activepos);
+          map.panTo(activepos);
+          map.setCenter(activepos);
+          map.setZoom(30);
+
           setClear(true);
           swal(msg.sucessMain, msg.successBody, 'success');
           dispatch(
@@ -77,8 +80,8 @@ const MapComponent = () => {
       setMap(
         new window.google.maps.Map(ref.current, {
           center,
-          zoom: 5,
-          minZoom: 4,
+          zoom: 8,
+          minZoom: 6,
           scaleControl: false,
           streetViewControl: false,
           zoomControl: false,

@@ -106,9 +106,7 @@ export const GlobalStyle = createGlobalStyle`
     padding:0;
     word-break:break-all;
   }
-  hr {
-    display:none;
-  }
+
   pre {
     overflow-x:scroll;
     font-size:1.1em;

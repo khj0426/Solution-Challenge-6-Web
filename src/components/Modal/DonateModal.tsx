@@ -5,7 +5,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { DonateModalBtn } from '../Button/DonateModalBtn';
 import { DonateModalCencelBtn } from '../Button/DonateCancelBtn';
-import { Donate } from '../../api/getDonationPoints';
 import { DonatePoint } from '../../api/donatePoint';
 type DonateProps = DonateModalState & {
   category: string;

@@ -48,11 +48,11 @@ const MapComponent = () => {
       if (typeof newPos !== 'undefined' && newPos !== null) {
         map.panTo(newPos);
       }
-
+      map.setZoom(15);
       if (typeof newPos !== 'undefined' && newPos !== null) {
         const boundry = map.getBounds();
         if (boundry?.contains(activepos)) {
-          map.setZoom(15);
+          marker?.setPosition(activepos);
           setClear(true);
           swal(msg.sucessMain, msg.successBody, 'success');
           dispatch(

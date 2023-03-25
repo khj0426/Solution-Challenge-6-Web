@@ -1,7 +1,6 @@
-import { requestInstance } from './instance/axios';
 import axios from 'axios';
 
-type DonatePointType = {
+export type DonatePointType = {
   category: string;
   donationPoint: number;
 };

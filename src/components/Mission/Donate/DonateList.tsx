@@ -10,10 +10,13 @@ const DonateList = ({ state, setState }: Props) => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   useEffect(() => {
+    if (state === false) {
+      return;
+    }
     Donate().then((res) => {
       setCategoriesPoint(res);
     });
-  }, []);
+  }, [state]);
 
   return (
     <>

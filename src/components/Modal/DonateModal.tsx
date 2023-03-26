@@ -40,7 +40,7 @@ const DonateModal = ({ state, setState, category }: DonateProps) => {
           <DonateModalCencelBtn />
           <DonateModalBtn
             onClick={() =>
-              DonatePoint({ category, donationPoint: donatePoint })
+              DonatePoint({ category, donationPoint: donatePoint, percent: '' })
             }
           />
         </DonateButArea>

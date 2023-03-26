@@ -1,12 +1,11 @@
 import { useRef, useState, useEffect } from 'react';
-import swal from 'sweetalert';
 import styled from 'styled-components';
-import { msg } from '../../constants/mapConstants';
 import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
 import { useDispatch } from 'react-redux';
 import mapstyle from '../../styles/mapStyle.json';
+
 const MapComponent = () => {
   //미션 성공 여부 전역적으로 관리해야 함
 
@@ -50,14 +49,15 @@ const MapComponent = () => {
       }
 
       if (typeof newPos !== 'undefined' && newPos !== null) {
-        const boundry = map.getBounds();
+        const boundry = new google.maps.LatLngBounds();
+        boundry.extend(newPos);
+        boundry.extend(activepos);
         if (boundry?.contains(activepos)) {
+          setMark({ pos: activepos, map });
           map.panTo(activepos);
           map.setCenter(activepos);
-          map.setZoom(30);
-
+          map.setZoom(15);
           setClear(true);
-          swal(msg.sucessMain, msg.successBody, 'success');
           dispatch(
             setMissonClear({
               clear: true,
@@ -81,7 +81,7 @@ const MapComponent = () => {
         new window.google.maps.Map(ref.current, {
           center,
           zoom: 8,
-          minZoom: 6,
+          minZoom: 7,
           scaleControl: false,
           streetViewControl: false,
           zoomControl: false,
@@ -115,11 +115,9 @@ const MapComponent = () => {
         (e: google.maps.MapMouseEvent) => {
           const pos = e.latLng?.toJSON();
           if (pos && true && drag === false) {
-            setPosition(pos);
             setMark({ pos, map });
             setClear(false);
           }
-
           setnewMap({ map });
         }
       );

@@ -5,7 +5,7 @@ import { Donate } from '../../../api/getDonationPoints';
 import { PieChart, Pie, Cell, LabelList } from 'recharts';
 import { DonatePointType } from '../../../api/donatePoint';
 import { useTheme } from '@mui/material/styles';
-
+import { CategoricalPoints } from './CategoryPoints';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const DonateList = ({ state, setState }: Props) => {
@@ -57,13 +57,14 @@ const DonateList = ({ state, setState }: Props) => {
         onClose={() => setState(!state)}
         onClick={() => setState(!state)}
         style={{
+          backgroundColor: 'white',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <Box>
+        <Box style={{ background: '#fff' }}>
           <PieChart
             width={isMobile ? 300 : 400}
             height={400}
@@ -100,14 +101,10 @@ const DonateList = ({ state, setState }: Props) => {
                     }}
                   />
                 ))}
-
-              <LabelList
-                dataKey="donationPoint"
-                position="outside"
-                fontWeight="light"
-              ></LabelList>
             </Pie>
           </PieChart>
+
+          <CategoricalPoints points={categoriesPoint} colors={COLORS} />
         </Box>
       </Modal>
     </>

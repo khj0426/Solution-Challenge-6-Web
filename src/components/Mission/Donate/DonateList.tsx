@@ -1,20 +1,52 @@
 import type { Props } from '../Mission';
 import { Modal, Box } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { Donate } from '../../../api/getDonationPoints';
-import { PieChart, Pie, Cell, ResponsiveContainer, LabelList } from 'recharts';
+import { PieChart, Pie, Cell, LabelList } from 'recharts';
 import { DonatePointType } from '../../../api/donatePoint';
-const DonateList = ({ state, setState }: Props) => {
-  const [categoriesPoint, setCategoriesPoint] = useState<DonatePointType[]>();
+import { useTheme } from '@mui/material/styles';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+const DonateList = ({ state, setState }: Props) => {
+  type DonationPointExtendPercent = DonatePointType;
+  const [categoriesPoint, setCategoriesPoint] = useState<
+    DonationPointExtendPercent[]
+  >([]);
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  useEffect(() => {
+    if (categoriesPoint.length > 0) {
+      let initsum = 0;
+      categoriesPoint?.forEach((eachDonateElement) => {
+        initsum += eachDonateElement.donationPoint;
+      });
+      const result: DonatePointType[] = [];
+      categoriesPoint.map((eachDonateElement) => {
+        const percent = (eachDonateElement.donationPoint / initsum) * 100;
+        const florrPercent = Math.floor(percent);
+        eachDonateElement.percent = String(florrPercent) + '%';
+        result.push(eachDonateElement);
+      });
+      setCategoriesPoint(result);
+    }
+  }, [categoriesPoint && categoriesPoint.length > 0 && state === true]);
 
   useEffect(() => {
     if (state === false) {
       return;
     }
     Donate().then((res) => {
-      setCategoriesPoint(res);
+      const setPoint = () => {
+        if (categoriesPoint.length > 0) {
+          return;
+        }
+        setCategoriesPoint(res);
+      };
+
+      setPoint();
     });
   }, [state]);
 
@@ -29,13 +61,11 @@ const DonateList = ({ state, setState }: Props) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '275px',
-          width: '275px',
         }}
       >
         <Box>
           <PieChart
-            width={350}
+            width={isMobile ? 300 : 400}
             height={400}
             style={{
               margin: '0 auto',
@@ -46,18 +76,18 @@ const DonateList = ({ state, setState }: Props) => {
             <Pie
               data={categoriesPoint}
               dataKey="donationPoint"
-              nameKey="category"
-              outerRadius={100}
+              nameKey="donationPoint"
+              outerRadius={isMobile ? 100 : 150}
               cx={'50%'}
               cy={'50%'}
               fill="#8884d8"
-              fontSize={13}
-              label={({ percent }) => `  (${(percent * 100).toFixed(0)}%)`}
+              fontSize={25}
             >
               <LabelList
-                dataKey="category"
-                position="right"
-                fontWeight="light"
+                dataKey="percent" // specify which data key to use for label text
+                position="inside"
+                fontSize={25}
+                // specify the position of the label - "inside", "outside", or "center"
               />
               {typeof categoriesPoint !== 'undefined' &&
                 categoriesPoint.map((entry, index) => (
@@ -66,10 +96,16 @@ const DonateList = ({ state, setState }: Props) => {
                     fill={COLORS[index]}
                     style={{
                       border: 'none',
-                      fontSize: '13px',
+                      fontSize: '20px',
                     }}
                   />
                 ))}
+
+              <LabelList
+                dataKey="donationPoint"
+                position="outside"
+                fontWeight="light"
+              ></LabelList>
             </Pie>
           </PieChart>
         </Box>
@@ -78,4 +114,4 @@ const DonateList = ({ state, setState }: Props) => {
   );
 };
 
-export default DonateList;
+export default memo(DonateList);

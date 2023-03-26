@@ -3,6 +3,7 @@ import axios from 'axios';
 export type DonatePointType = {
   category: string;
   donationPoint: number;
+  percent: string;
 };
 
 export const DonatePoint = ({ category, donationPoint }: DonatePointType) => {

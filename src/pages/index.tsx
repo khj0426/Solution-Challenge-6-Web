@@ -5,11 +5,6 @@ import MapWrapper from '../components/Map/MapWrapper';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const StyledMainDiv = styled.div`
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-  `;
   const StyledMainActive = styled.div`
     opacity: 1;
     width: 100%;

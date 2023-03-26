@@ -54,7 +54,6 @@ const MapComponent = () => {
             newPos,
             activepos
           );
-        console.log(distance);
 
         const Bounds = 1000;
         if (distance <= Bounds) {

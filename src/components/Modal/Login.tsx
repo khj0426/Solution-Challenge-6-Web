@@ -12,9 +12,10 @@ const Login = () => {
           height: '380px',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-evenly',
+          justifyContent: 'center',
           alignItems: 'center',
           boxShadow: 'none',
+          margin: '100px auto',
         }}
       >
         <Typography

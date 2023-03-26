@@ -5,11 +5,13 @@ import sessionStorage from 'redux-persist/lib/storage/session';
 import globalLatLng from './misson/latandlng';
 import missonClearFlag from './misson/clearMisson';
 import missonAnswer from './misson/answer';
+import globalmodalState from './globalmodal';
 
 const reducers = combineReducers({
   globalLatLng: globalLatLng.reducer,
   missonAns: missonAnswer.reducer,
   missonClear: missonClearFlag.reducer,
+  globalModal: globalmodalState.reducer,
 });
 
 const persistConfig = {

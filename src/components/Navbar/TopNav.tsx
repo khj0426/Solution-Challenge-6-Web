@@ -7,7 +7,6 @@ import DrawerButtonTheme from '../../styles/DrawerButton';
 import { useDispatch } from 'react-redux';
 import { active } from '../Store/module/globalmodal';
 import { useRouter } from 'next/router';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DonateList from '../Mission/Donate/DonateList';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -50,6 +49,7 @@ function MyAppBar() {
       <div
         style={{
           marginRight: '20px',
+          marginTop: '25px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -73,8 +73,8 @@ function MyAppBar() {
           <Image
             src="/img/Menu.png"
             alt="Top Menu Image"
-            width={30}
-            height={30}
+            width={35}
+            height={35}
           />
         </div>
 
@@ -83,7 +83,7 @@ function MyAppBar() {
           src={img}
           alt="User Profile Img provided by Google"
           onClick={HandleClickAvatar}
-          sx={{ width: 32, height: 32 }}
+          sx={{ width: 35, height: 35 }}
         />
         <ThemeProvider theme={DrawerButtonTheme}>
           <Avatar
@@ -92,8 +92,8 @@ function MyAppBar() {
             }}
             src="/img/startBtn.jpg"
             sx={{
-              width: 30,
-              height: 30,
+              width: 35,
+              height: 35,
               position: 'fixed',
               bottom: '0',
               right: '0',
@@ -116,6 +116,7 @@ const StyledUserPoint = styled.div`
   font-weight: 700;
   cursor: pointer;
   display: flex;
+  height: 40px;
   font-weight: 500;
   justify-content: space-between;
   align-items: center;

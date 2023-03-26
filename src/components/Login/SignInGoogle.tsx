@@ -31,7 +31,7 @@ export const SigninGoogle = () => {
         }
 
         dispatch(deactive());
-        router.push('/Main');
+        router.push(router.asPath);
       })
       .catch((err) => {
         return err;

@@ -49,10 +49,15 @@ const MapComponent = () => {
       }
 
       if (typeof newPos !== 'undefined' && newPos !== null) {
-        const boundry = new google.maps.LatLngBounds();
-        boundry.extend(newPos);
-        boundry.extend(activepos);
-        if (boundry?.contains(activepos)) {
+        const distance =
+          google?.maps?.geometry?.spherical?.computeDistanceBetween(
+            newPos,
+            activepos
+          );
+        console.log(distance);
+
+        const Bounds = 1000;
+        if (distance <= Bounds) {
           setMark({ pos: activepos, map });
           map.panTo(activepos);
           map.setCenter(activepos);

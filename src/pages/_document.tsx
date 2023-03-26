@@ -47,6 +47,9 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP_KEY}&libraries=geometry`}
+          ></script>
         </body>
       </Html>
     );

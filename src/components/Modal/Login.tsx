@@ -6,7 +6,7 @@ const Login = () => {
       <div
         style={{
           background: 'rgba(255, 255, 255, 0.7)',
-          border: '1px solid #aaaaaa',
+          border: '0.7px solid #aaaaaa',
           borderRadius: '20px',
           width: '350px',
           height: '380px',

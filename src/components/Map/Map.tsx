@@ -12,7 +12,6 @@ const MapComponent = () => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
-  const [, setPosition] = useState<google.maps.LatLngLiteral | null>(null);
   const [drag, setIsDragging] = useState<boolean>(false);
   const [clear, setClear] = useState<boolean>(false);
 
@@ -131,7 +130,6 @@ const MapComponent = () => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
-
       {clear && true ? <MissonSuccess /> : null}
     </>
   );

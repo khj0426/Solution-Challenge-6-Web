@@ -14,6 +14,7 @@ export type TypeMission = {
   latitude: string;
   longitude: string;
   miPoint: number;
+  category: string;
 };
 
 export type Props = {
@@ -87,7 +88,7 @@ const Mission = ({ state, setState }: Props) => {
         sx: {
           width: 340,
           height: 'auto',
-          background: '#FFFFFF',
+          background: 'none',
           borderRadius: '10px',
         },
         style: {

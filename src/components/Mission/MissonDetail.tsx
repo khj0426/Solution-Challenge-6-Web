@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { TypeMission } from './Mission';
 import { setLatLng } from '../Store/module/misson/latandlng';
 import { useDispatch } from 'react-redux';
+import { categoryMapping } from '../../constants/missonConstants';
 
 const MissionDetail = ({
   setAction,
@@ -32,6 +33,9 @@ const MissionDetail = ({
           borderBottom: '3px solid #CCCCCC',
           display: 'flex',
           alignItems: 'center',
+          marginBottom: '20px',
+          boxShadow: '0px 0px 4px rgba(0,0,0,0.25)',
+          borderRadius: '10px',
         }}
       >
         <CardContent>
@@ -50,7 +54,10 @@ const MissionDetail = ({
             }}
           >
             {score === false ? (
-              <Avatar alt="missonimg" src="/img/missonBtn.jpg" />
+              <Avatar
+                alt="missonimg"
+                src={`${categoryMapping.get(mission.category)}`}
+              />
             ) : null}
 
             <div

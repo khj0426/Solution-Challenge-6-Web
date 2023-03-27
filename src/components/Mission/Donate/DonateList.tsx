@@ -64,7 +64,7 @@ const DonateList = ({ state, setState }: Props) => {
           alignItems: 'center',
         }}
       >
-        <Box style={{ background: '#fff' }}>
+        <Box style={{ background: '#fff', borderRadius: '10px' }}>
           <PieChart
             width={isMobile ? 300 : 400}
             height={400}

@@ -37,17 +37,19 @@ const StyledCategoriesWrapper = styled.div`
   display: flex;
   margin-top: 15px;
   width: 100%;
+  margin-bottom: 20px;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
-
   font-weight: 600;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
 `;
 
 const StyledCategorie = styled.div`
-  border: 1.5px solid #d1d1d1;
-  border-radius: 5px;
+  border: 2px solid #d1d1d1;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   gap: 15px;

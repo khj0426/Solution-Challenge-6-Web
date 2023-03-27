@@ -59,12 +59,17 @@ function MyAppBar() {
       >
         <StyledUserPoint>
           <Image
+            style={{ marginLeft: '5px' }}
             src="/img/point.png"
             alt="유저의 포인트"
             width={30}
             height={30}
           />
-          <span style={{ color: 'black', fontWeight: '700' }}>{userpoint}</span>
+          <span
+            style={{ color: 'black', fontWeight: '700', marginRight: '10px' }}
+          >
+            {userpoint}
+          </span>
         </StyledUserPoint>
         <div
           style={{ cursor: 'pointer' }}
@@ -112,7 +117,7 @@ function MyAppBar() {
 
 const StyledUserPoint = styled.div`
   background: #ffffff;
-  width: 130px;
+  width: 140px;
   font-weight: 700;
   cursor: pointer;
   display: flex;

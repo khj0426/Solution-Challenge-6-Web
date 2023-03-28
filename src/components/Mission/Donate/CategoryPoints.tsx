@@ -1,7 +1,7 @@
 //카테고리 별 포인트 나타내는 컴포넌트
 import { DonatePointType } from '../../../api/donatePoint';
 import styled from 'styled-components';
-
+import { uuidv4 } from '@firebase/util';
 export const CategoricalPoints = ({
   points,
   colors,
@@ -13,10 +13,9 @@ export const CategoricalPoints = ({
     <>
       <StyledCategoriesWrapper>
         {points.map((point, index) => (
-          <>
-            <StyledCategorie>
+          <div key={uuidv4()}>
+            <StyledCategorie key={uuidv4()}>
               <StyledCategorePoint
-                key={point.category}
                 style={{
                   background: `${colors[index]}`,
                 }}
@@ -26,7 +25,7 @@ export const CategoricalPoints = ({
                 <div>{point.donationPoint}</div>
               </StyledTextArea>
             </StyledCategorie>
-          </>
+          </div>
         ))}
       </StyledCategoriesWrapper>
     </>

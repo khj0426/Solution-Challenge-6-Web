@@ -7,6 +7,7 @@ import { DonatePointType } from '../../../api/donatePoint';
 import { useTheme } from '@mui/material/styles';
 import { CategoricalPoints } from './CategoryPoints';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { uuidv4 } from '@firebase/util';
 
 const DonateList = ({ state, setState }: Props) => {
   type DonationPointExtendPercent = DonatePointType;
@@ -77,7 +78,7 @@ const DonateList = ({ state, setState }: Props) => {
             <Pie
               data={categoriesPoint}
               dataKey="donationPoint"
-              nameKey="donationPoint"
+              nameKey={uuidv4()}
               outerRadius={isMobile ? 100 : 150}
               cx={'50%'}
               cy={'50%'}

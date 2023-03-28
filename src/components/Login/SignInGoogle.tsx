@@ -45,6 +45,7 @@ export const SigninGoogle = () => {
           name="google login button"
           variant="text"
           color="inherit"
+          style={{ backgroundColor: 'white' }}
           onClick={() => {
             handleLogin();
           }}

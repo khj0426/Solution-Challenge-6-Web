@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export type DonatePointType = {
   category: string;
@@ -20,8 +21,10 @@ export const DonatePoint = ({ category, donationPoint }: DonatePointType) => {
         },
       }
     );
-    console.log(res);
+    return res;
   };
 
-  donateUserPoint();
+  donateUserPoint().then(() => {
+    swal('Donate Completed!');
+  });
 };

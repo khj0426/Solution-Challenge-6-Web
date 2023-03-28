@@ -54,7 +54,7 @@ const MapComponent = () => {
             activepos
           );
 
-        const Bounds = 1000;
+        const Bounds = 15000;
         if (distance <= Bounds) {
           setMark({ pos: activepos, map });
           map.panTo(activepos);

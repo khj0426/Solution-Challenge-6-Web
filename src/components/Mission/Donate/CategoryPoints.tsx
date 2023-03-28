@@ -13,7 +13,14 @@ export const CategoricalPoints = ({
     <>
       <StyledCategoriesWrapper>
         {points.map((point, index) => (
-          <div key={uuidv4()}>
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'space-around',
+            }}
+            key={uuidv4()}
+          >
             <StyledCategorie key={uuidv4()}>
               <StyledCategorePoint
                 style={{

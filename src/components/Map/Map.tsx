@@ -84,7 +84,6 @@ const MapComponent = () => {
         new window.google.maps.Map(ref.current, {
           center,
           zoom: 8,
-          minZoom: 7,
           scaleControl: false,
           streetViewControl: false,
           zoomControl: false,

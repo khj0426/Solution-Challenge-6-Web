@@ -56,13 +56,15 @@ export const MissonSuccess = () => {
           />
         ) : null}
 
-        <Image
-          style={{ objectFit: 'cover', display: 'block' }}
-          src={data.imgUrl}
-          alt="misson success image"
-          height={350}
-          width={350}
-        />
+        {data.imgUrl.length > 0 && (
+          <Image
+            style={{ objectFit: 'cover', display: 'block' }}
+            src={data.imgUrl}
+            alt="misson success image"
+            height={350}
+            width={350}
+          />
+        )}
 
         <StyledP></StyledP>
         <StyledH2>{data.question}</StyledH2>

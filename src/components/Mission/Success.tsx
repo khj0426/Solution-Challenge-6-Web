@@ -124,7 +124,7 @@ const StylerdTextArea = styled.div`
   &::-webkit-scrollbar {
     border-radius: 6px;
     width: 12px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.8);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -149,8 +149,8 @@ const StyledSection = styled.section<{ state: boolean }>`
   align-items: center;
   flex-direction: column;
   width: 350px;
-  height: 100vh;
-  border-radius: 5px 0px 0px 5px;
+  height: 95vh;
+  border-radius: 15px;
   background-color: #ffffff;
   ${({ state }) => state === true && backOpacityNone}
 
@@ -162,5 +162,5 @@ const StyledSection = styled.section<{ state: boolean }>`
 `;
 
 const backOpacityNone = css`
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 1);
 `;

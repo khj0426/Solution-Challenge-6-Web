@@ -14,12 +14,12 @@ const DonateModal = ({ state, setState, category }: DonateProps) => {
   const [donatePoint, setDonatePoint] = useState<number>(100);
   const minusClickAction: () => void = () => {
     if (donatePoint >= 100) {
-      setDonatePoint(donatePoint - 100);
+      setDonatePoint(donatePoint - 10);
     }
   };
 
   const plusClickAction: () => void = () => {
-    setDonatePoint(donatePoint + 100);
+    setDonatePoint(donatePoint + 10);
   };
 
   return (
@@ -51,6 +51,7 @@ const DonateModal = ({ state, setState, category }: DonateProps) => {
 
 const ModalClose = styled.div`
   display: flex;
+  cursor: pointer;
   justify-content: center;
   font-size: 18px;
 `;

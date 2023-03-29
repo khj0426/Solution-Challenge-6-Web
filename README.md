@@ -89,6 +89,12 @@ width:80%;margin:0 auto">
 <!-- Features -->
 <hr />
 
+## Database ERD
+
+<img src = "https://user-images.githubusercontent.com/63100425/227961116-42bd865b-8211-4fe6-871e-d7ad0ce935c3.png" />
+<br />
+<hr />
+
 ## Features
 
 <p> When users access the site, they click the bottom Earth Icon, and then get three missons. </p>
@@ -214,3 +220,13 @@ To deploy this project run
 <img src = "https://i0.wp.com/brightestyoungthings.com/wp-content/uploads/2018/06/earth-gif-13.gif?fit=498%2C498&quality=100&ssl=1 " />
 
 <p style = "font-size:16px">Contributions are welcome! Please use GitHub issues to submit bug reports, feature requests, or other ideas. Simply create a new issue in our repository and provide clear instructions for how others can contribute. Our team will review all issues and work with contributors to merge changes into our codebase.<p>
+<br />
+
+# 👩🏻‍💻 Team of BeP
+
+|                                주동석                                 |                               김하은                               |                               이지선                               |                               김효중                               |
+| :-------------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: |
+| <img src = "https://avatars.githubusercontent.com/u/16567811?v=4 " /> | <img src="https://avatars.githubusercontent.com/u/72500673?v=4" /> | <img src="https://avatars.githubusercontent.com/u/63100425?v=4" /> | <img src="https://avatars.githubusercontent.com/u/59411107?v=4" /> |
+|              [@MojitoBar](https://github.com/MojitoBar)               |               [@hanni66](https://github.com/hanni66)               |              [@kikingki](https://github.com/kikingki)              |               [@khj0426](https://github.com/khj0426)               |
+
+<br />

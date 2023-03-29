@@ -99,14 +99,14 @@ width:80%;margin:0 auto">
 
 <p> When users access the site, they click the bottom Earth Icon, and then get three missons. </p>
 <p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-<p>When user clear the misson, the Detail of the misson will apear. User can donate their points in Categories</p>
+<p>When user clear the misson, the Detail of the misson will apear. User can donate their points in Categories.When click top Menu icon, You can easily see Points by Category</p>
 
 <br />
   <img src = "https://user-images.githubusercontent.com/59411107/228603992-3a75758e-78a7-4208-a992-963d3241c10f.gif" style = "width:480px" />
   <img src = "https://user-images.githubusercontent.com/59411107/228608669-99875c2c-e279-4821-862b-e2e2ec9fed85.gif" style = "width:480px" />
   </div>
 <br />
-<p>When click top Menu icon, You can easily see Points by Category</p>
+
 <br />
 <hr />
 

@@ -74,7 +74,7 @@ width:80%;margin:0 auto">
 
 ## Google Maps
 
-<h3>We opted Google Maps to interact with users. Users simply get Missons and solve missons. All answer is latitude and longtitude.So we use Google Maps to get and compate latitude and longtitude easily.</h3>
+<h3>We opted Google Maps to interact with users. Users simply get Missons and solve missons. All answer is latitude and longtitude.So we use Google Maps to get and compare latitude and longtitude easily.</h3>
 <br />
 
 ## Google Cloud Platform
@@ -98,15 +98,15 @@ width:80%;margin:0 auto">
 ## Features
 
 <p> When users access the site, they click the bottom Earth Icon, and then get three missons. </p>
-<br />
 <p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-<br />
 <p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-<br />
 <p>When user clear the misson, the Detail of the misson will apear.</p>
-<br />
 <p>User can donate their points in Categories</p>
+
+<br />
   <img src = "https://user-images.githubusercontent.com/59411107/228603992-3a75758e-78a7-4208-a992-963d3241c10f.gif" style = "width:480px" />
+  <img src = "https://user-images.githubusercontent.com/59411107/228608669-99875c2c-e279-4821-862b-e2e2ec9fed85.gif" style = "width:480px" />
+  </div>
 <br />
 <p>When click top Menu icon, You can easily see Points by Category</p>
 <br />

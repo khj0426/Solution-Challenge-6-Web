@@ -74,7 +74,7 @@ width:80%;margin:0 auto">
 
 ## Google Maps
 
-<h3>We opted Google Maps to interact with users. Users simply get Missons and solve missons. All answer is latitude and longtitude.So we use Google Maps to get and compate latitude and longtitude easily.</h3>
+<h3>We opted Google Maps to interact with users. Users simply get Missons and solve missons. All answer is latitude and longtitude.So we use Google Maps to get and compare latitude and longtitude easily.</h3>
 <br />
 
 ## Google Cloud Platform
@@ -98,33 +98,19 @@ width:80%;margin:0 auto">
 ## Features
 
 <p> When users access the site, they click the bottom Earth Icon, and then get three missons. </p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228495403-007c3466-bcd6-4096-b716-f5ad5790c20c.png" style = "width:480px"/>
-
-<br />
-
 <p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228497275-9de7ae59-36f7-4f24-b88a-6be9597f845f.png" style = "width:480px"/>
+<p>When user clear the misson, the Detail of the misson will apear. User can donate their points in Categories.When click top Menu icon, You can easily see Points by Category</p>
+
+<br />
+  <img src = "https://user-images.githubusercontent.com/59411107/228603992-3a75758e-78a7-4208-a992-963d3241c10f.gif" style = "width:480px" />
+  <img src = "https://user-images.githubusercontent.com/59411107/228608669-99875c2c-e279-4821-862b-e2e2ec9fed85.gif" style = "width:480px" />
+  </div>
 <br />
 
-<p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228497275-9de7ae59-36f7-4f24-b88a-6be9597f845f.png" style = "width:480px"/>
 <br />
-
-<p>When user clear the misson, the Detail of the misson will apear.</p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228500334-85ca384d-5f01-4f71-92ad-143c6af06af3.png" style = "width:480px"/>
-<br />
-
-<p>User can donate their points in Categories</p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228501082-f3fd4ac8-493a-4112-a484-9985b74b005b.png" style = "width:480px" />
-<br />
-
-<p>When click top Menu icon, You can easily see Points by Category</p>
-  <img src = "https://user-images.githubusercontent.com/59411107/228501712-69176abd-3359-4c06-a52a-68062c1da3b9.png" style = "width:480px" />
-<br />
-
 <hr />
 
-## Roadmap
+## Current / Next Steps
 
 <div style = "font-size:15px">[O] When users access the site, they can see three random missions.</div>
 <div style = "font-size:15px">[O] Each mission is based on the Sustainable Development Goals (e.g. 13, 14, 15).</div>

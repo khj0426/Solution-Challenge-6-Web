@@ -3,51 +3,28 @@ import { Modal, Box } from '@mui/material';
 import { useEffect, useState, memo } from 'react';
 import { Donate } from '../../../api/getDonationPoints';
 import { PieChart, Pie, Cell, LabelList } from 'recharts';
-import { DonatePointType } from '../../../api/donatePoint';
 import { useTheme } from '@mui/material/styles';
 import { CategoricalPoints } from './CategoryPoints';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { uuidv4 } from '@firebase/util';
+import { TypeofDonateFetchAPI } from '../../../api/getDonationPoints';
 
 const DonateList = ({ state, setState }: Props) => {
-  type DonationPointExtendPercent = DonatePointType;
   const [categoriesPoint, setCategoriesPoint] = useState<
-    DonationPointExtendPercent[]
+    TypeofDonateFetchAPI[]
   >([]);
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    if (categoriesPoint.length > 0) {
-      let initsum = 0;
-      categoriesPoint?.forEach((eachDonateElement) => {
-        initsum += eachDonateElement.donationPoint;
-      });
-      const result: DonatePointType[] = [];
-      categoriesPoint.map((eachDonateElement) => {
-        const percent = (eachDonateElement.donationPoint / initsum) * 100;
-        const florrPercent = Math.floor(percent);
-        eachDonateElement.percent = String(florrPercent) + '%';
-        result.push(eachDonateElement);
-      });
-      setCategoriesPoint(result);
-    }
-  }, [categoriesPoint && categoriesPoint.length > 0 && state === true]);
-
-  useEffect(() => {
     if (state === false) {
       return;
     }
     Donate().then((res) => {
-      const setPoint = () => {
-        if (categoriesPoint.length > 0) {
-          return;
-        }
+      if (typeof res !== 'undefined') {
         setCategoriesPoint(res);
-      };
-
-      setPoint();
+      }
     });
   }, [state]);
 

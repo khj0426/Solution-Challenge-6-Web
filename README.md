@@ -209,11 +209,8 @@ To deploy this project run
 
 ## Contributing
 
-<a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
-</a>
-
-<p style = "font-size:16px">Contributions are always welcome!</P>
 <br />
+
+<img src = "https://i0.wp.com/brightestyoungthings.com/wp-content/uploads/2018/06/earth-gif-13.gif?fit=498%2C498&quality=100&ssl=1 " />
 
 <p style = "font-size:16px">Contributions are welcome! Please use GitHub issues to submit bug reports, feature requests, or other ideas. Simply create a new issue in our repository and provide clear instructions for how others can contribute. Our team will review all issues and work with contributors to merge changes into our codebase.<p>

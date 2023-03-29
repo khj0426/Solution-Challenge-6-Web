@@ -99,9 +99,7 @@ width:80%;margin:0 auto">
 
 <p> When users access the site, they click the bottom Earth Icon, and then get three missons. </p>
 <p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-<p>The missons is divided in to categories. Climate Action, Life Below Water, Life On Land and Other. When user click the misson, the misson point will appear.</p>
-<p>When user clear the misson, the Detail of the misson will apear.</p>
-<p>User can donate their points in Categories</p>
+<p>When user clear the misson, the Detail of the misson will apear. User can donate their points in Categories</p>
 
 <br />
   <img src = "https://user-images.githubusercontent.com/59411107/228603992-3a75758e-78a7-4208-a992-963d3241c10f.gif" style = "width:480px" />
@@ -112,7 +110,7 @@ width:80%;margin:0 auto">
 <br />
 <hr />
 
-## Roadmap
+## Current / Next Steps
 
 <div style = "font-size:15px">[O] When users access the site, they can see three random missions.</div>
 <div style = "font-size:15px">[O] Each mission is based on the Sustainable Development Goals (e.g. 13, 14, 15).</div>

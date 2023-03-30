@@ -49,7 +49,7 @@ class MyDocument extends Document {
           <NextScript />
           <script
             async
-            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP_KEY}&libraries=geometry`}
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP_KEY}&libraries=geometry,places`}
           ></script>
         </body>
       </Html>

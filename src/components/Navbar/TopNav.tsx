@@ -15,7 +15,7 @@ export type propsFunction = () => void;
 function MyAppBar() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [userpoint, setUserPoint] = useState<number>(0);
+  const [userpoint, setUserPoint] = useState<string>('');
   const [img, setImg] = useState<string | undefined>('');
   const [missonDrawer, setMissonOpen] = useState<boolean>(false);
   const [donatelistDrawer, setDonateListOpen] = useState<boolean>(false);
@@ -32,7 +32,7 @@ function MyAppBar() {
   useEffect(() => {
     const point = sessionStorage.getItem('userPoint');
     if (point !== null) {
-      setUserPoint(parseInt(point));
+      setUserPoint(point);
     }
   }, [sessionStorage.getItem('userPoint')]);
 

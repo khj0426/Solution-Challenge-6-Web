@@ -21,10 +21,12 @@ export const DonatePoint = ({ category, donationPoint }: DonatePointType) => {
         },
       }
     );
+
+    sessionStorage.setItem('userPoint', res.data);
     return res;
   };
 
-  donateUserPoint().then(() => {
+  donateUserPoint().then((res) => {
     swal('Donate Completed!');
   });
 };

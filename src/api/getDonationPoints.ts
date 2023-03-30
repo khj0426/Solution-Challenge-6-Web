@@ -45,7 +45,7 @@ export const Donate = () => {
       }
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
-        console.log(error.code);
+        console.log(error.status + error.message);
       } else {
         console.log(error);
       }

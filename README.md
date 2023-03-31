@@ -28,10 +28,13 @@ width:80%;margin:0 auto">
 
 <hr />
 
-## About our Project: --요기에 데모 영상 넣을거임 --
+## About our Project
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
+
+
+<a href = "https://www.youtube.com/watch?v=eIh8eERBSR4">[![](http://img.youtube.com/vi/eIh8eERBSR4/0.jpg)](https://youtu.be/eIh8eERBSR4?t=0s)  </a>
+
 </div>
 
 <!-- TechStack -->

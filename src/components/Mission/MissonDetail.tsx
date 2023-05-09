@@ -29,13 +29,14 @@ const MissionDetail = ({
   return (
     <>
       <Card
-        style={{
+        sx={{
           borderBottom: '3px solid #CCCCCC',
           display: 'flex',
           alignItems: 'center',
           marginBottom: '20px',
           boxShadow: '0px 0px 4px rgba(0,0,0,0.25)',
           borderRadius: '10px',
+          border: score ? '2px solid blue' : 'none', // score 값에 따라 다른 border 스타일을 주입
         }}
       >
         <CardContent>
@@ -82,11 +83,27 @@ const MissionDetail = ({
 
               {score === true && (
                 <StyledScoreActiveDiv>
-                  <StyledFilpPoint
-                    style={{ fontSize: '13px', fontWeight: '600' }}
+                  <Avatar
+                    style={{
+                      fontSize: '13px',
+                      color: '#367BB7',
+                      background: '#fff',
+                      fontWeight: '500',
+                      boxShadow: '0px 0px 5px #367BB7',
+                    }}
                   >
-                    <div>{mission.miPoint}</div>
-                  </StyledFilpPoint>
+                    {mission.miPoint}
+                  </Avatar>
+                  <Typography
+                    style={{
+                      marginRight: 'auto',
+                      fontSize: '13px',
+                      fontWeight: '600',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {mission.question}
+                  </Typography>
                 </StyledScoreActiveDiv>
               )}
 
@@ -109,6 +126,8 @@ const MissionDetail = ({
 
 const StyledScoreActiveDiv = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledSelected = css`

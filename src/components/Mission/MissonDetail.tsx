@@ -34,9 +34,8 @@ const MissionDetail = ({
           display: 'flex',
           alignItems: 'center',
           marginBottom: '20px',
-          boxShadow: '0px 0px 4px rgba(0,0,0,0.25)',
           borderRadius: '10px',
-          border: score ? '2px solid blue' : 'none', // score 값에 따라 다른 border 스타일을 주입
+          border: score ? '4px solid #367BB7' : 'none',
         }}
       >
         <CardContent>
@@ -100,6 +99,7 @@ const MissionDetail = ({
                       fontSize: '13px',
                       fontWeight: '600',
                       alignItems: 'center',
+                      marginLeft: '5px',
                     }}
                   >
                     {mission.question}

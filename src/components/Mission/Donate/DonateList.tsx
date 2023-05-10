@@ -35,7 +35,6 @@ const DonateList = ({ state, setState }: Props) => {
         onClose={() => setState(!state)}
         onClick={() => setState(!state)}
         style={{
-          backgroundColor: 'white',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'center',

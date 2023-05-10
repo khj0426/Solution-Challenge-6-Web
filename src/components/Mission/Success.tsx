@@ -7,6 +7,7 @@ import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
 import { useDispatch } from 'react-redux';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
+import SuccessSkeleton from './SuccessSkelton';
 
 export const MissonSuccess = () => {
   type newMisson = {
@@ -19,6 +20,7 @@ export const MissonSuccess = () => {
 
   const dispatch = useDispatch();
 
+  const [isDataOnLoad, setDataLoad] = useState<boolean>(false);
   const [modal, setModal] = useState<boolean>(false);
   const [data, setData] = useState<newMisson>({
     category: '',
@@ -45,18 +47,25 @@ export const MissonSuccess = () => {
       })
     );
   }, []);
+
+  useEffect(() => {
+    if (data.category !== '' && data.imgUrl !== '' && data.question !== '') {
+      setDataLoad(true);
+    }
+  }, [data]);
+
   return (
     <>
-      <StyledSection state={modal}>
-        {modal && true ? (
-          <DonateModal
-            state={modal}
-            setState={setModal}
-            category={data.category}
-          />
-        ) : null}
+      {isDataOnLoad && (
+        <StyledSection state={modal}>
+          {modal && true ? (
+            <DonateModal
+              state={modal}
+              setState={setModal}
+              category={data.category}
+            />
+          ) : null}
 
-        {data.imgUrl.length > 0 && (
           <Image
             style={{ objectFit: 'cover', display: 'block' }}
             src={data.imgUrl}
@@ -64,26 +73,25 @@ export const MissonSuccess = () => {
             height={350}
             width={350}
           />
-        )}
+          <StyledH2>{data.question}</StyledH2>
+          <StylerdTextArea>{data.content}</StylerdTextArea>
+          <StyledButton
+            onClick={() => {
+              setModal(true);
+            }}
+          >
+            <Image
+              src="/img/donation 1.png"
+              alt="dantate image"
+              width={30}
+              height={30}
+            />
+            Donate
+          </StyledButton>
+        </StyledSection>
+      )}
 
-        <StyledP></StyledP>
-        <StyledH2>{data.question}</StyledH2>
-        <StylerdTextArea>{data.content}</StylerdTextArea>
-
-        <StyledButton
-          onClick={() => {
-            setModal(true);
-          }}
-        >
-          <Image
-            src="/img/donation 1.png"
-            alt="dantate image"
-            width={30}
-            height={30}
-          />
-          Donate
-        </StyledButton>
-      </StyledSection>
+      {isDataOnLoad === false && <SuccessSkeleton />}
     </>
   );
 };
@@ -101,15 +109,6 @@ const StyledButton = styled.button`
   height: 45px;
   align-items: center;
   color: #ffffff;
-`;
-
-const StyledP = styled.p`
-  font-size: 13px;
-  display: flex;
-  width: 100%;
-  font-weight: 700;
-  margin-top: 30px;
-  color: #616161;
 `;
 
 const StylerdTextArea = styled.div`

@@ -11,7 +11,18 @@ const SuccessSkeleton = () => {
         height={350}
       />
       <Skeleton animation="wave" variant="text" width={350} height={50} />
-      <Skeleton animation="wave" variant="text" width={350} height={400} />
+      <Skeleton
+        animation="wave"
+        variant="text"
+        width={350}
+        height={400}
+        style={{
+          marginTop: '20px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      />
       <Skeleton
         variant="text"
         width={300}

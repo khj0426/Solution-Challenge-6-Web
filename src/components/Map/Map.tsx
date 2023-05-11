@@ -13,7 +13,7 @@ const MapComponent = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
   const [drag, setIsDragging] = useState<boolean>(false);
-  const [clear, setClear] = useState<boolean>(false);
+  const [successModal, setSuccessModal] = useState<boolean>(false);
 
   //set new Marker in new Position
   const setMark = ({
@@ -56,11 +56,8 @@ const MapComponent = () => {
 
         const Bounds = 150000;
         if (distance <= Bounds) {
-          setMark({ pos: activepos, map });
-          map.panTo(activepos);
-          map.setCenter(activepos);
-          map.setZoom(15);
-          setClear(true);
+          marker?.setPosition(activepos);
+          setSuccessModal(true);
           dispatch(
             setMissonClear({
               clear: true,
@@ -118,7 +115,6 @@ const MapComponent = () => {
           const pos = e.latLng?.toJSON();
           if (pos && true && drag === false) {
             setMark({ pos, map });
-            setClear(false);
           }
           setnewMap({ map });
         }
@@ -129,7 +125,9 @@ const MapComponent = () => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
-      {clear && true ? <MissonSuccess /> : null}
+      {successModal && true ? (
+        <MissonSuccess onClose={() => setSuccessModal(false)} />
+      ) : null}
     </>
   );
 };

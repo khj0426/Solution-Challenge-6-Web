@@ -8,8 +8,10 @@ import newStore from '../Store/module';
 import { useDispatch } from 'react-redux';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
 import SuccessSkeleton from './SuccessSkelton';
+import { setMissonNotClear } from '../Store/module/misson/clearMisson';
+import { Button } from '@mui/material';
 
-export const MissonSuccess = () => {
+export const MissonSuccess = ({ onClose }: { onClose: () => void }) => {
   type newMisson = {
     category: string;
     content: string;
@@ -19,6 +21,10 @@ export const MissonSuccess = () => {
   };
 
   const dispatch = useDispatch();
+  const handleMissonClose = () => {
+    dispatch(setMissonNotClear());
+    onClose();
+  };
 
   const [isDataOnLoad, setDataLoad] = useState<boolean>(false);
   const [modal, setModal] = useState<boolean>(false);
@@ -58,6 +64,7 @@ export const MissonSuccess = () => {
     <>
       {isDataOnLoad && (
         <StyledSection state={modal}>
+          <Button onClick={handleMissonClose}>X</Button>
           {modal && true ? (
             <DonateModal
               state={modal}

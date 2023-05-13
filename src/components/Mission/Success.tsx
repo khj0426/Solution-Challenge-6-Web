@@ -42,7 +42,7 @@ export const MissonSuccess = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const id = newStore.getState().persist.globalLatLng.id + '';
+      const id = newStore.getState().latlng.id + '';
       const response = await getNewMisson({ id });
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);

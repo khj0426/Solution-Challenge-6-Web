@@ -37,8 +37,8 @@ const MapComponent = () => {
 
   const setnewMap = ({ map }: { map: google.maps.Map }) => {
     const activepos: google.maps.LatLngLiteral = {
-      lat: newStore.getState().persist.globalLatLng.lat,
-      lng: newStore.getState().persist.globalLatLng.lng,
+      lat: newStore.getState().latlng.lat,
+      lng: newStore.getState().latlng.lng,
     };
 
     if (map) {
@@ -54,7 +54,7 @@ const MapComponent = () => {
             activepos
           );
 
-        const Bounds = 150000;
+        const Bounds = 5000;
         if (distance <= Bounds) {
           marker?.setPosition(activepos);
           setSuccessModal(true);
@@ -126,7 +126,7 @@ const MapComponent = () => {
     <>
       <MapArea ref={ref}></MapArea>
       {successModal && true ? (
-        <MissonSuccess onClose={() => setSuccessModal(false)} />
+        <MissonSuccess setMissonOpen={setSuccessModal} />
       ) : null}
     </>
   );

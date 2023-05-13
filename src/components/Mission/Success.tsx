@@ -1,7 +1,7 @@
 //미션 성공시 나타날 컴포넌트
 import styled, { css } from 'styled-components';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import DonateModal from '../Modal/DonateModal';
 import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
@@ -11,7 +11,11 @@ import SuccessSkeleton from './SuccessSkelton';
 import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 import { Button } from '@mui/material';
 
-export const MissonSuccess = ({ onClose }: { onClose: () => void }) => {
+export const MissonSuccess = ({
+  setMissonOpen,
+}: {
+  setMissonOpen: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   type newMisson = {
     category: string;
     content: string;
@@ -23,7 +27,7 @@ export const MissonSuccess = ({ onClose }: { onClose: () => void }) => {
   const dispatch = useDispatch();
   const handleMissonClose = () => {
     dispatch(setMissonNotClear());
-    onClose();
+    setMissonOpen(false);
   };
 
   const [isDataOnLoad, setDataLoad] = useState<boolean>(false);

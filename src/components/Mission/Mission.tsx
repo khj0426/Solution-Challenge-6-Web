@@ -30,13 +30,13 @@ const Mission = ({ state, setState }: Props) => {
   const [authorize, hasAuthorize] = useState<boolean>(true);
 
   useEffect(() => {
-    setClear(newStore.getState().persist.missonClear.clear);
+    setClear(newStore.getState().global.missonClear.clear);
 
     if (clear === true) {
       onClickDrawer();
     }
     dispatch(setMissonNotClear());
-  }, [newStore.getState().persist.missonClear.clear]);
+  }, [newStore.getState().global.missonClear.clear]);
 
   useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {

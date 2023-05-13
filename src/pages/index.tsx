@@ -3,7 +3,6 @@ import newStore from '../components/Store/module';
 import styled from 'styled-components';
 import MapWrapper from '../components/Map/MapWrapper';
 import { useState, useEffect } from 'react';
-
 export default function Home() {
   const StyledMainActive = styled.div`
     opacity: 1;
@@ -12,11 +11,11 @@ export default function Home() {
   `;
 
   const [login, setLoignActive] = useState<boolean>(
-    newStore.getState().persist.globalModal.modal
+    newStore.getState().global.globalModal.modal
   );
   useEffect(() => {
-    setLoignActive(newStore.getState().persist.globalModal.modal);
-  }, [newStore.getState().persist.globalModal.modal]);
+    setLoignActive(newStore.getState().global.globalModal.modal);
+  }, [newStore.getState().global.globalModal.modal]);
 
   return (
     <>

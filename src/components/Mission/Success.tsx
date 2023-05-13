@@ -6,7 +6,7 @@ import DonateModal from '../Modal/DonateModal';
 import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
 import { useDispatch } from 'react-redux';
-import { setMissonClear } from '../Store/module/misson/clearMisson';
+import { setAnswer } from '../Store/module/misson/answer';
 import SuccessSkeleton from './SuccessSkelton';
 import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 import { Button } from '@mui/material';
@@ -46,16 +46,13 @@ export const MissonSuccess = ({
       const response = await getNewMisson({ id });
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);
+      dispatch(setAnswer(response.data));
       const { userPoint } = response.data;
+      console.log(response.data, userPoint);
       sessionStorage.setItem('userPoint', userPoint + '');
     };
 
     fetchData();
-    dispatch(
-      setMissonClear({
-        clear: true,
-      })
-    );
   }, []);
 
   useEffect(() => {

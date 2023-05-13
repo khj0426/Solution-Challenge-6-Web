@@ -54,7 +54,7 @@ const MapComponent = () => {
             activepos
           );
 
-        const Bounds = 5000;
+        const Bounds = 500000000;
         if (distance <= Bounds) {
           marker?.setPosition(activepos);
           setSuccessModal(true);
@@ -113,6 +113,7 @@ const MapComponent = () => {
         'click',
         (e: google.maps.MapMouseEvent) => {
           const pos = e.latLng?.toJSON();
+
           if (pos && true && drag === false) {
             setMark({ pos, map });
           }

@@ -7,6 +7,7 @@ import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
 import { useDispatch } from 'react-redux';
 import { setAnswer } from '../Store/module/misson/answer';
+import { setLatLng } from '../Store/module/misson/latandlng';
 import SuccessSkeleton from './SuccessSkelton';
 import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 import { Button } from '@mui/material';
@@ -47,8 +48,14 @@ export const MissonSuccess = ({
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);
       dispatch(setAnswer(response.data));
+      dispatch(
+        setLatLng({
+          id: 0,
+          lat: 0,
+          lng: 0,
+        })
+      );
       const { userPoint } = response.data;
-      console.log(response.data, userPoint);
       sessionStorage.setItem('userPoint', userPoint + '');
     };
 

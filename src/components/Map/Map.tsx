@@ -54,7 +54,7 @@ const MapComponent = () => {
             activepos
           );
 
-        const Bounds = 500000000;
+        const Bounds = 5000;
         if (distance <= Bounds) {
           marker?.setPosition(activepos);
           setSuccessModal(true);

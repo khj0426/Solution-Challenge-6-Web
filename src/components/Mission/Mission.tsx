@@ -2,12 +2,9 @@ import { Drawer } from '@mui/material';
 import { SetStateAction, Dispatch, useEffect, useState } from 'react';
 import axios from 'axios';
 import MissionDetail from './MissonDetail';
-import { setAnswer } from '../Store/module/misson/answer';
-import { useDispatch } from 'react-redux';
-import newStore from '../Store/module';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { setMissonNotClear } from '../Store/module/misson/clearMisson';
-
+import { RootState } from '../Store/module';
 export type TypeMission = {
   id: number;
   question: string;
@@ -23,20 +20,10 @@ export type Props = {
 };
 
 const Mission = ({ state, setState }: Props) => {
-  const dispatch = useDispatch();
-  const [clear, setClear] = useState<boolean>(false);
+  const globalId = useSelector((state: RootState) => state.latlng.id);
   const [missions, setMissions] = useState<TypeMission[]>([]);
   const [activemisson, setActivemisson] = useState<number>(0);
   const [authorize, hasAuthorize] = useState<boolean>(true);
-
-  useEffect(() => {
-    setClear(newStore.getState().global.missonClear.clear);
-
-    if (clear === true) {
-      onClickDrawer();
-    }
-    dispatch(setMissonNotClear());
-  }, [newStore.getState().global.missonClear.clear]);
 
   useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {
@@ -51,21 +38,20 @@ const Mission = ({ state, setState }: Props) => {
         },
       });
       if (status === 200) {
-        setMissions(data);
+        console.log(data);
+        setMissions(() => data);
         hasAuthorize(true);
-        dispatch(setAnswer(data));
       }
     };
 
     fetchMissions();
   }, [sessionStorage.getItem('accessToken')]);
 
-  const onClickDrawer = () => {
+  useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {
       return;
     }
-
-    if (clear === true) {
+    if (globalId === 0) {
       const fetchMissions = async () => {
         const { data, status } = await axios.get('api/main', {
           headers: {
@@ -73,14 +59,15 @@ const Mission = ({ state, setState }: Props) => {
           },
         });
         if (status === 200) {
-          setMissions(data);
-          dispatch(setAnswer(data));
+          console.log(data);
+          setMissions(() => data);
+          hasAuthorize(true);
         }
       };
 
       fetchMissions();
     }
-  };
+  }, [globalId]);
 
   return (
     <Drawer

@@ -47,7 +47,6 @@ export const MissonSuccess = ({
       const response = await getNewMisson({ id });
       /*에러 핸들링 추가 할 부분 */
       setData(response.data);
-      dispatch(setAnswer(response.data));
       dispatch(
         setLatLng({
           id: 0,

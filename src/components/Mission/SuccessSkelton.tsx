@@ -2,6 +2,9 @@ import { Skeleton } from '@mui/material';
 import styled from 'styled-components';
 
 const SuccessSkeleton = ({ isOpen }: { isOpen: boolean }) => {
+  if (isOpen === false) {
+    return null;
+  }
   return (
     <SuccessSkeletonWrapper>
       <Skeleton

@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material';
 import styled from 'styled-components';
 
-const SuccessSkeleton = () => {
+const SuccessSkeleton = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <SuccessSkeletonWrapper>
       <Skeleton

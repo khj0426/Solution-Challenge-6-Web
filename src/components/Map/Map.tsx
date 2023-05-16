@@ -3,12 +3,19 @@ import styled from 'styled-components';
 import newStore from '../Store/module';
 import { MissonSuccess } from '../Mission/Success';
 import { setMissonClear } from '../Store/module/misson/clearMisson';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import mapstyle from '../../styles/mapStyle.json';
+import { RootState } from '../Store/module';
 
 const MapComponent = () => {
   //미션 성공 여부 전역적으로 관리해야 함
 
+  const missonClearState = useSelector(
+    (state: RootState) => state.global.missonClear.clear
+  );
+
+  const activeLatitude = useSelector((state: RootState) => state.latlng.lat);
+  const activeLongitude = useSelector((state: RootState) => state.latlng.lng);
   const dispatch = useDispatch();
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
@@ -37,8 +44,8 @@ const MapComponent = () => {
 
   const setnewMap = ({ map }: { map: google.maps.Map }) => {
     const activepos: google.maps.LatLngLiteral = {
-      lat: newStore.getState().latlng.lat,
-      lng: newStore.getState().latlng.lng,
+      lat: activeLatitude,
+      lng: activeLongitude,
     };
 
     if (map) {
@@ -54,7 +61,7 @@ const MapComponent = () => {
             activepos
           );
 
-        const Bounds = 5000;
+        const Bounds = 100000;
         if (distance <= Bounds) {
           marker?.setPosition(activepos);
           setSuccessModal(true);
@@ -125,7 +132,7 @@ const MapComponent = () => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
-      {successModal && true ? (
+      {missonClearState && true ? (
         <MissonSuccess setMissonOpen={setSuccessModal} />
       ) : null}
     </>

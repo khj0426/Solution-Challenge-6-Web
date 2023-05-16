@@ -28,7 +28,7 @@ export const MissonSuccess = ({
   const dispatch = useDispatch();
   const handleMissonClose = () => {
     dispatch(setMissonNotClear());
-    setMissonOpen(false);
+    setDataLoad(false);
   };
 
   const [isDataOnLoad, setDataLoad] = useState<boolean>(false);
@@ -106,7 +106,7 @@ export const MissonSuccess = ({
         </StyledSection>
       )}
 
-      {isDataOnLoad === false && <SuccessSkeleton />}
+      {isDataOnLoad === false && <SuccessSkeleton isOpen={modal} />}
     </>
   );
 };

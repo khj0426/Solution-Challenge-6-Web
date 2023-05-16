@@ -19,23 +19,18 @@ const persistConfig = {
 
 const persist = persistReducer(persistConfig, reducers);
 
-const makeStore = () => {
-  const store = configureStore({
-    reducer: {
-      global: persist,
-      latlng: globalLatLng.reducer,
-    },
+const newStore = configureStore({
+  reducer: {
+    global: persist,
+    latlng: globalLatLng.reducer,
+  },
 
-    middleware: (defaultMiddleware) =>
-      defaultMiddleware({
-        serializableCheck: false,
-      }),
-  });
+  middleware: (defaultMiddleware) =>
+    defaultMiddleware({
+      serializableCheck: false,
+    }),
+});
 
-  return store;
-};
-
-const newStore = makeStore();
 export default newStore;
 
-export type RootState = ReturnType<typeof reducers>;
+export type RootState = ReturnType<typeof newStore.getState>;

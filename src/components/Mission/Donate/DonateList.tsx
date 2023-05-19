@@ -23,7 +23,7 @@ const DonateList = ({ state, setState }: Props) => {
     }
     Donate().then((res) => {
       if (typeof res !== 'undefined') {
-        setCategoriesPoint(res);
+        setCategoriesPoint(() => [...res]);
       }
     });
   }, [state]);

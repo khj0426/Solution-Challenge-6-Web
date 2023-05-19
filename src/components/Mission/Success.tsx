@@ -6,17 +6,12 @@ import DonateModal from '../Modal/DonateModal';
 import { getNewMisson } from '../../api/getmisson';
 import newStore from '../Store/module';
 import { useDispatch } from 'react-redux';
-import { setAnswer } from '../Store/module/misson/answer';
 import { setLatLng } from '../Store/module/misson/latandlng';
 import SuccessSkeleton from './SuccessSkelton';
 import { setMissonNotClear } from '../Store/module/misson/clearMisson';
 import { Button } from '@mui/material';
 
-export const MissonSuccess = ({
-  setMissonOpen,
-}: {
-  setMissonOpen: React.Dispatch<SetStateAction<boolean>>;
-}) => {
+export const MissonSuccess = () => {
   type newMisson = {
     category: string;
     content: string;

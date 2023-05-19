@@ -21,6 +21,8 @@ const MapComponent = () => {
   const [drag, setIsDragging] = useState<boolean>(false);
   const [successModal, setSuccessModal] = useState<boolean>(false);
 
+  //미션을 깼을 시 좌표가 {0,0}인가?
+
   //set new Marker in new Position
   const setMark = ({
     pos,
@@ -131,9 +133,7 @@ const MapComponent = () => {
   return (
     <>
       <MapArea ref={ref}></MapArea>
-      {missonClearState && true ? (
-        <MissonSuccess setMissonOpen={setSuccessModal} />
-      ) : null}
+      {missonClearState && true ? <MissonSuccess /> : null}
     </>
   );
 };

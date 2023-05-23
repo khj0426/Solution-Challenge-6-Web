@@ -57,7 +57,11 @@ function MyAppBar() {
           gap: '6px',
         }}
       >
-        <StyledUserPoint>
+        <StyledUserPoint
+          onClick={() => {
+            router.push('/articles');
+          }}
+        >
           <Image
             style={{ marginLeft: '5px' }}
             src="/img/point.png"

@@ -18,17 +18,18 @@ const nextConfig = {
     return [
       {
         source: '/api/main',
-        destination: 'https://bepserver.duckdns.org/main',
+        destination: 'https://bep-server-skr6jumqta-uc.a.run.app/main',
       },
 
       {
         source: '/api/main/:path*',
-        destination: 'https://bepserver.duckdns.org/main/:path*',
+        destination: 'https://bep-server-skr6jumqta-uc.a.run.app/main/:path*',
       },
 
       {
         source: '/main/donation/categories',
-        destination: 'https://bepserver.duckdns.org/main/donations/categories',
+        destination:
+          'https://bep-server-skr6jumqta-uc.a.run.app/main/donations/categories',
       },
     ];
   },

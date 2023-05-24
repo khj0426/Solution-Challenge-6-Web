@@ -6,12 +6,16 @@ import {
   Avatar,
   Card,
   ListItemText,
-  Input,
-  Button,
 } from '@mui/material';
+import type { Comment } from '../../pages/articles';
+import ArticleInput from './ArticleInput';
 
-
-export default function EllipsisList() {
+export default function EllipsisList({
+  articles,
+}: {
+  articles: Comment[] | null;
+}) {
+  //map으로 List props 받아서 랜더링할꺼임
   return (
     <>
       <Card
@@ -31,44 +35,28 @@ export default function EllipsisList() {
             aria-labelledby="ellipsis-list-demo"
             sx={{ '--ListItemDecorator-size': '56px' }}
           >
-            <ListItem
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '5px',
-              }}
-            >
-              <Avatar src="/static/images/avatar/1.jpg" />
-              <ListItemText>
-                <Typography>
-                  Brunch this weekend? I&apos;ll be in your neighborhood doing
-                  errands this Tuesday.
-                </Typography>
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '5px',
-              }}
-            >
-              <Avatar src="/static/images/avatar/2.jpg" />
-              <ListItemText>
-                <Typography>
-                  Summer BBQ.Wish I could come, but I&apos;m out of town this
-                  Friday.
-                </Typography>
-              </ListItemText>
-            </ListItem>
+            {articles &&
+              Object.entries(articles).map(([key, value]) => (
+                <>
+                  <ListItem
+                    key={key}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '5px',
+                    }}
+                  >
+                    <Avatar src="/static/images/avatar/1.jpg" />
+                    <ListItemText>
+                      <Typography>{value.comment}</Typography>
+                    </ListItemText>
+                  </ListItem>
+                </>
+              ))}
           </List>
         </Box>
       </Card>
-
-      <Input placeholder="Go your chat" />
-      <Button aria-label="Submit" variant="text">
-        Go
-      </Button>
+      <ArticleInput />
     </>
   );
 }

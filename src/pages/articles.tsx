@@ -3,33 +3,38 @@ import { ref, get } from 'firebase/database';
 import { DB } from '../api/instance/firebase'; // Firebase 실시간 데이터베이스 인스턴스 가져오기
 import type { GetStaticProps } from 'next';
 
-export type ArticleData = {
-  data: {
-    title: string;
-  };
+export type Comment = {
+  comment: string;
+  user: string;
 };
-
 export const getStaticProps: GetStaticProps = async () => {
-  let posts: ArticleData[] = [];
+  let posts: Comment[] = [];
   try {
     const articleRef = ref(DB, '/');
     const snapShot = await get(articleRef);
 
     if (snapShot.exists()) {
       posts = snapShot.val();
-      console.log(posts);
+      for (const comment in posts) {
+        posts = [
+          ...posts,
+          {
+            comment: posts[comment].comment,
+            user: posts[comment].user,
+          },
+        ];
+      }
     }
   } catch (error) {
     console.log(error);
   }
 
   return {
-    props: { ...posts },
+    props: posts,
   };
 };
 
-const ArticlePage = (props: ArticleData[] | null) => {
-  console.log(props);
+const ArticlePage = (props: Comment[] | null) => {
   return <Article articles={props} />;
 };
 

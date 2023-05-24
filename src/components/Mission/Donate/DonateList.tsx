@@ -18,9 +18,6 @@ const DonateList = ({ state, setState }: Props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    if (state === false) {
-      return;
-    }
     Donate().then((res) => {
       if (typeof res !== 'undefined') {
         setCategoriesPoint(() => [...res]);

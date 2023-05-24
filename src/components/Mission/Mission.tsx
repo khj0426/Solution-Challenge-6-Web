@@ -24,7 +24,6 @@ const Mission = ({ state, setState }: Props) => {
   const [missions, setMissions] = useState<TypeMission[]>([]);
   const [activemisson, setActivemisson] = useState<number>(0);
   const [authorize, hasAuthorize] = useState<boolean>(true);
-
   useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {
       hasAuthorize(false);
@@ -38,7 +37,6 @@ const Mission = ({ state, setState }: Props) => {
         },
       });
       if (status === 200) {
-        console.log(data);
         setMissions(() => data);
         hasAuthorize(true);
       }
@@ -59,7 +57,6 @@ const Mission = ({ state, setState }: Props) => {
           },
         });
         if (status === 200) {
-          console.log(data);
           setMissions(() => data);
           hasAuthorize(true);
         }
@@ -91,7 +88,6 @@ const Mission = ({ state, setState }: Props) => {
       {authorize === false ? (
         <StyledNotLogin>로그인이 필요합니다</StyledNotLogin>
       ) : null}
-
       {missions.map((mission, index) => (
         <MissionDetail
           key={mission.id}

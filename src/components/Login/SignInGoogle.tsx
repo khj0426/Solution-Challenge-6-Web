@@ -28,6 +28,8 @@ export const SigninGoogle = () => {
             user.userimgURL,
             res.user.photoURL as string
           );
+
+          window.sessionStorage.setItem('userId', res.user.displayName);
         }
 
         dispatch(deactive());

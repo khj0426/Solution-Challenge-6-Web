@@ -1,7 +1,6 @@
 import { requestInstance } from './instance/axios';
 
 //토큰을 발급받는 함수
-
 const getAccessToken = ({
   username,
   email,
@@ -39,7 +38,7 @@ const getAccessToken = ({
 
     if (resData.status === 200) {
       sessionStorage.setItem('accessToken', resData.data.accessToken);
-      sessionStorage.setItem('userPoint',resData.data.userPoint);
+      sessionStorage.setItem('userPoint', resData.data.userPoint);
     }
   };
 

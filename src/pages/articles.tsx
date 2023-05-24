@@ -6,6 +6,7 @@ import type { GetStaticProps } from 'next';
 export type Comment = {
   comment: string;
   user: string;
+  userimg: string;
 };
 export const getStaticProps: GetStaticProps = async () => {
   let posts: Comment[] = [];
@@ -15,15 +16,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
     if (snapShot.exists()) {
       posts = snapShot.val();
-      for (const comment in posts) {
-        posts = [
-          ...posts,
-          {
-            comment: posts[comment].comment,
-            user: posts[comment].user,
-          },
-        ];
-      }
     }
   } catch (error) {
     console.log(error);

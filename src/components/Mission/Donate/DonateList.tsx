@@ -23,7 +23,7 @@ const DonateList = ({ state, setState }: Props) => {
         setCategoriesPoint(() => [...res]);
       }
     });
-  }, [state]);
+  }, []);
 
   return (
     <>

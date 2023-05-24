@@ -46,7 +46,7 @@ export default function EllipsisList({
                       gap: '5px',
                     }}
                   >
-                    <Avatar src="/static/images/avatar/1.jpg" />
+                    <Avatar src={value.userimg} alt="user article img" />
                     <ListItemText>
                       <Typography>{value.comment}</Typography>
                     </ListItemText>

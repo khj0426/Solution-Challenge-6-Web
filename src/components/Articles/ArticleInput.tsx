@@ -11,9 +11,11 @@ const ArticleInput = () => {
 
   const handleArticleSubmit = () => {
     const User = sessionStorage.getItem('userId') || 'anonymous user';
+    const UserImg = sessionStorage.getItem('imgURL') || '';
     push(ref(DB, '/'), {
       comment: article,
       user: User,
+      userimg: UserImg,
     });
   };
   return (

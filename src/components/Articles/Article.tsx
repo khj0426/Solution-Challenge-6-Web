@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import type { Comment } from '../../pages/articles';
 import ArticleInput from './ArticleInput';
+import { v4 } from 'uuid';
 
 export default function EllipsisList({
   articles,
@@ -36,22 +37,20 @@ export default function EllipsisList({
             sx={{ '--ListItemDecorator-size': '56px' }}
           >
             {articles &&
-              Object.entries(articles).map(([key, value]) => (
-                <>
-                  <ListItem
-                    key={key}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '5px',
-                    }}
-                  >
-                    <Avatar src={value.userimg} alt="user article img" />
-                    <ListItemText>
-                      <Typography>{value.comment}</Typography>
-                    </ListItemText>
-                  </ListItem>
-                </>
+              Object.entries(articles).map(([, value]) => (
+                <ListItem
+                  key={v4()}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '5px',
+                  }}
+                >
+                  <Avatar src={value.userimg} alt="user article img" />
+                  <ListItemText>
+                    <Typography>{value.comment}</Typography>
+                  </ListItemText>
+                </ListItem>
               ))}
           </List>
         </Box>

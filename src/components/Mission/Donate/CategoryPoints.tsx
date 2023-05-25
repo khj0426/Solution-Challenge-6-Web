@@ -1,7 +1,9 @@
 //카테고리 별 포인트 나타내는 컴포넌트
 import { TypeofDonateFetchAPI } from '../../../api/getDonationPoints';
 import styled from 'styled-components';
-import { uuidv4 } from '@firebase/util';
+import { v4 } from 'uuid';
+import Image from 'next/image';
+
 export const CategoricalPoints = ({
   points,
   colors,
@@ -19,9 +21,9 @@ export const CategoricalPoints = ({
               width: '100%',
               justifyContent: 'space-around',
             }}
-            key={uuidv4()}
+            key={v4()}
           >
-            <StyledCategorie key={uuidv4()}>
+            <StyledCategorie>
               <StyledCategorePoint
                 style={{
                   background: `${colors[index]}`,
@@ -32,6 +34,12 @@ export const CategoricalPoints = ({
                 <div>{point.donationPoint}</div>
               </StyledTextArea>
             </StyledCategorie>
+            <Image
+              src="./img/PayPalBtn.jpg"
+              alt="PayPal Connect Btn"
+              width={209}
+              height={80}
+            />
           </div>
         ))}
       </StyledCategoriesWrapper>

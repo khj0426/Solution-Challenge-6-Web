@@ -43,7 +43,7 @@ const Mission = ({ state, setState }: Props) => {
     };
 
     fetchMissions();
-  }, [sessionStorage.getItem('accessToken')]);
+  }, []);
 
   useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {

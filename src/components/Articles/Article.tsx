@@ -29,7 +29,7 @@ export default function EllipsisList({
           borderRadius: '15px',
         }}
       >
-        <Box sx={{ width: '50%' }}>
+        <Box sx={{ width: '80%' }}>
           <Typography sx={{ letterSpacing: '0.15rem', fontWeight: '700' }}>
             Chat
           </Typography>

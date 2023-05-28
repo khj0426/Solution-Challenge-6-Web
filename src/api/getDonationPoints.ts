@@ -32,6 +32,9 @@ export const Donate = () => {
     return result;
   };
   const getDonationCategories = async () => {
+    if (sessionStorage.getItem('accessToken') === null) {
+      return;
+    }
     try {
       const res = await axios.get('main/donation/categories', {
         headers: {

@@ -2,10 +2,10 @@ import {
   Box,
   Typography,
   List,
-  ListItem,
   Avatar,
   Card,
-  ListItemText,
+  Grid,
+  Paper,
 } from '@mui/material';
 import type { Comment } from '../../pages/articles';
 import ArticleInput from './ArticleInput';
@@ -17,6 +17,7 @@ export default function EllipsisList({
   articles: Comment[] | null;
 }) {
   //map으로 List props 받아서 랜더링할꺼임
+
   return (
     <>
       <Card
@@ -38,19 +39,25 @@ export default function EllipsisList({
           >
             {articles &&
               Object.entries(articles).map(([, value]) => (
-                <ListItem
+                <Paper
                   key={v4()}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '5px',
-                  }}
+                  style={{ padding: '40px 20px', marginTop: 10 }}
                 >
-                  <Avatar src={value.userimg} alt="user article img" />
-                  <ListItemText>
-                    <Typography>{value.comment}</Typography>
-                  </ListItemText>
-                </ListItem>
+                  <Grid container wrap="nowrap" spacing={2}>
+                    <Grid item>
+                      <Avatar alt="Users image profile" src={value.userimg} />
+                    </Grid>
+                    <Grid justifyContent="left" item xs zeroMinWidth>
+                      <h4 style={{ margin: 0, textAlign: 'left' }}>
+                        {value.user}
+                      </h4>
+                      <p style={{ textAlign: 'left' }}>{value.comment}</p>
+                      <p style={{ textAlign: 'left', color: 'gray' }}>
+                        posted {value.commentTime}
+                      </p>
+                    </Grid>
+                  </Grid>
+                </Paper>
               ))}
           </List>
         </Box>

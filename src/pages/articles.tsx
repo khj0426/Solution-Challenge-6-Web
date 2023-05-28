@@ -8,6 +8,7 @@ export type Comment = {
   comment: string;
   user: string;
   userimg: string;
+  commentTime: string;
 };
 export const getStaticProps: GetStaticProps = async () => {
   let posts: Comment[] = [];

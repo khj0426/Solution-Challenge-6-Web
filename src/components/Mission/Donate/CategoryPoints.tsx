@@ -34,14 +34,14 @@ export const CategoricalPoints = ({
                 <div>{point.donationPoint}</div>
               </StyledTextArea>
             </StyledCategorie>
-            <Image
-              src="./img/PayPalBtn.jpg"
-              alt="PayPal Connect Btn"
-              width={209}
-              height={80}
-            />
           </div>
         ))}
+        <Image
+          src="/img/PayPalBtn.jpg"
+          alt="PayPal Connect Btn"
+          width={209}
+          height={80}
+        />
       </StyledCategoriesWrapper>
     </>
   );

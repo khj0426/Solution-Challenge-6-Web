@@ -10,12 +10,26 @@ const ArticleInput = () => {
   };
 
   const handleArticleSubmit = () => {
+    const date = new Date();
+    const UTCTime = new Date(
+      Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate(),
+        date.getUTCHours(),
+        date.getUTCMinutes(),
+        date.getUTCSeconds()
+      )
+    );
+
+    const NOWUTC = new Date(UTCTime).toUTCString() + '';
     const User = sessionStorage.getItem('userId') || 'anonymous user';
     const UserImg = sessionStorage.getItem('imgURL') || '';
     push(ref(DB, '/'), {
       comment: article,
       user: User,
       userimg: UserImg,
+      commentTime: NOWUTC,
     });
   };
   return (

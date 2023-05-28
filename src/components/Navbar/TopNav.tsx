@@ -32,7 +32,7 @@ function MyAppBar() {
   useEffect(() => {
     const point = sessionStorage.getItem('userPoint');
     if (point !== null) {
-      setUserPoint(point);
+      setUserPoint(() => point);
     }
   }, [sessionStorage.getItem('userPoint')]);
 

@@ -18,12 +18,14 @@ const DonateList = ({ state, setState }: Props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    Donate().then((res) => {
-      if (typeof res !== 'undefined') {
-        setCategoriesPoint(() => [...res]);
-      }
-    });
-  }, []);
+    if (state === false && sessionStorage.getItem('accessToken')) {
+      Donate().then((res) => {
+        if (typeof res !== 'undefined') {
+          setCategoriesPoint(() => [...res]);
+        }
+      });
+    }
+  }, [state]);
 
   return (
     <>

@@ -4,6 +4,7 @@ export const requestInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    'Cache-Control': 'max-age=120',
   },
   timeout: 60 * 1000,
 });

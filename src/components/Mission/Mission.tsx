@@ -25,7 +25,7 @@ const Mission = ({ state, setState }: Props) => {
   const [activemisson, setActivemisson] = useState<number>(0);
   const [authorize, hasAuthorize] = useState<boolean>(true);
   useEffect(() => {
-    if (sessionStorage.getItem('accessToken') === null) {
+    if (sessionStorage.getItem('accessToken') === null && state === false) {
       hasAuthorize(false);
       return;
     }
@@ -34,6 +34,7 @@ const Mission = ({ state, setState }: Props) => {
       const { data, status } = await axios.get('api/main', {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+          'Cache-Control': 'max-age=60',
         },
       });
       if (status === 200) {
@@ -43,7 +44,7 @@ const Mission = ({ state, setState }: Props) => {
     };
 
     fetchMissions();
-  }, []);
+  }, [state]);
 
   useEffect(() => {
     if (sessionStorage.getItem('accessToken') === null) {

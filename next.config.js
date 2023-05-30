@@ -7,6 +7,7 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
     domains: ['*'],
   },
   compiler: {
@@ -27,9 +28,9 @@ const nextConfig = {
       },
 
       {
-        source: '/main/donation/categories',
+        source: '/main/donations/:path*',
         destination:
-          'https://bep-server-skr6jumqta-uc.a.run.app/main/donations/categories',
+          'https://bep-server-skr6jumqta-uc.a.run.app/main/donations/:path*',
       },
     ];
   },

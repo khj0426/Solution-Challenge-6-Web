@@ -17,6 +17,7 @@ export const MissonSuccess = () => {
     content: string;
     imgUrl: string;
     question: string;
+    donationId: string;
     userPoint: number;
   };
 
@@ -34,6 +35,7 @@ export const MissonSuccess = () => {
     imgUrl: '',
     question: '',
     userPoint: 0,
+    donationId: '',
   });
 
   useEffect(() => {
@@ -71,7 +73,7 @@ export const MissonSuccess = () => {
             <DonateModal
               state={modal}
               setState={setModal}
-              category={data.category}
+              donationId={data.donationId}
             />
           ) : null}
 

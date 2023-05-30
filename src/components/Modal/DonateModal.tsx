@@ -6,14 +6,19 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { DonateModalBtn } from '../Button/DonateModalBtn';
 import { DonateModalCencelBtn } from '../Button/DonateCancelBtn';
 import { DonatePoint } from '../../api/donatePoint';
+import useUserPoint from '../../api/useUserPoint';
+
 type DonateProps = DonateModalState & {
-  category: string;
+  donationId: string;
 };
 
-const DonateModal = ({ state, setState, category }: DonateProps) => {
-  const [donatePoint, setDonatePoint] = useState<number>(100);
+const DonateModal = ({ state, setState, donationId }: DonateProps) => {
+  const userPoint = useUserPoint();
+  console.log(userPoint);
+  const [donatePoint, setDonatePoint] = useState<number>(Number(userPoint));
+
   const minusClickAction: () => void = () => {
-    if (donatePoint >= 100) {
+    if (donatePoint >= 20) {
       setDonatePoint(donatePoint - 10);
     }
   };
@@ -40,7 +45,11 @@ const DonateModal = ({ state, setState, category }: DonateProps) => {
           <DonateModalCencelBtn />
           <DonateModalBtn
             onClick={() =>
-              DonatePoint({ category, donationPoint: donatePoint, percent: '' })
+              DonatePoint({
+                donationId: donationId,
+                donationPoint: donatePoint,
+                percent: '',
+              })
             }
           />
         </DonateButArea>

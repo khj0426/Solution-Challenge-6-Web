@@ -2,18 +2,17 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 export type DonatePointType = {
-  category: string;
   donationPoint: number;
   percent: string;
+  donationId: string;
 };
 
-export const DonatePoint = ({ category, donationPoint }: DonatePointType) => {
+export const DonatePoint = ({ donationPoint, donationId }: DonatePointType) => {
   const donateUserPoint = async () => {
     const res = await axios.post(
-      'api/main/donations',
+      `/main/donations/${donationId}`,
       {
-        category,
-        donationPoint: donationPoint,
+        donationPoint,
       },
       {
         headers: {
@@ -21,6 +20,7 @@ export const DonatePoint = ({ category, donationPoint }: DonatePointType) => {
         },
       }
     );
+    console.log(res.status + res.data + res.headers);
 
     sessionStorage.setItem('userPoint', res.data);
     return res;

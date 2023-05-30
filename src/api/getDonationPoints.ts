@@ -4,6 +4,7 @@ export type TypeofDonateFetchAPI = {
   category: string;
   percent: string;
   donationPoint: string;
+  id: string;
 };
 
 export const Donate = () => {
@@ -36,7 +37,7 @@ export const Donate = () => {
       return;
     }
     try {
-      const res = await axios.get('main/donation/categories', {
+      const res = await axios.get('/main/donations', {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
           'Cache-Control': 'max-age=60', // 1분으로 설정

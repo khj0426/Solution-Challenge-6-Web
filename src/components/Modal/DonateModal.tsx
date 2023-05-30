@@ -6,16 +6,13 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { DonateModalBtn } from '../Button/DonateModalBtn';
 import { DonateModalCencelBtn } from '../Button/DonateCancelBtn';
 import { DonatePoint } from '../../api/donatePoint';
-import useUserPoint from '../../api/useUserPoint';
 
 type DonateProps = DonateModalState & {
   donationId: string;
 };
 
 const DonateModal = ({ state, setState, donationId }: DonateProps) => {
-  const userPoint = useUserPoint();
-  console.log(userPoint);
-  const [donatePoint, setDonatePoint] = useState<number>(Number(userPoint));
+  const [donatePoint, setDonatePoint] = useState<number>(100);
 
   const minusClickAction: () => void = () => {
     if (donatePoint >= 20) {

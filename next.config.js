@@ -32,6 +32,10 @@ const nextConfig = {
         destination:
           'https://bep-server-skr6jumqta-uc.a.run.app/main/donations/:path*',
       },
+      {
+        source: '/user-point',
+        destination: 'https://bep-server-skr6jumqta-uc.a.run.app/user-point',
+      },
     ];
   },
 };

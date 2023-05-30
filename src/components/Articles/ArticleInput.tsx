@@ -34,7 +34,14 @@ const ArticleInput = () => {
   };
   return (
     <>
-      <Input placeholder="Go your chat" onChange={handleChangeArticle} />
+      <Input
+        placeholder="Go your chat"
+        onChange={handleChangeArticle}
+        style={{
+          width: '50vw',
+          marginBottom: '60px',
+        }}
+      />
       <Button aria-label="Submit" variant="text" onClick={handleArticleSubmit}>
         Go
       </Button>

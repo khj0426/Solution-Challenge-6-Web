@@ -26,6 +26,11 @@ const nextConfig = {
         source: '/api/main/:path*',
         destination: 'https://bep-server-skr6jumqta-uc.a.run.app/main/:path*',
       },
+      {
+        source: '/main/donations',
+        destination:
+          'https://bep-server-skr6jumqta-uc.a.run.app/main/donations',
+      },
 
       {
         source: '/main/donations/:path*',

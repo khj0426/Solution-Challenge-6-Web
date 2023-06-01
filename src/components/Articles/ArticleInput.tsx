@@ -30,20 +30,36 @@ const ArticleInput = () => {
       user: User,
       userimg: UserImg,
       commentTime: NOWUTC,
+    }).then(() => {
+      setArticle('');
     });
   };
   return (
     <>
       <Input
-        placeholder="Go your chat"
+        placeholder="Please enter your comments"
         onChange={handleChangeArticle}
         style={{
           width: '50vw',
           marginBottom: '60px',
         }}
       />
-      <Button aria-label="Submit" variant="text" onClick={handleArticleSubmit}>
-        Go
+      <Button
+        aria-label="Submit"
+        variant="text"
+        onClick={handleArticleSubmit}
+        style={{
+          background: 'rgb(0, 136, 254)',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '1.2rem',
+            color: 'white',
+          }}
+        >
+          Go
+        </span>
       </Button>
     </>
   );

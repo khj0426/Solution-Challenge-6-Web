@@ -3,6 +3,7 @@ import { TypeofDonateFetchAPI } from '../../../api/getDonationPoints';
 import styled from 'styled-components';
 import { v4 } from 'uuid';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const CategoricalPoints = ({
   points,
@@ -36,12 +37,25 @@ export const CategoricalPoints = ({
             </StyledCategorie>
           </div>
         ))}
-        <Image
-          src="/img/PayPalBtn.jpg"
-          alt="PayPal Connect Btn"
-          width={209}
-          height={80}
-        />
+       <Link
+          href="https://www.paypal.com/paypalme/jiseon0212?country.x=KR&locale.x=ko_KR"
+          target="_blank"
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            $1 Donate
+            <Image
+              src="/img/PayPalBtn.jpg"
+              alt="PayPal Connect Btn"
+              width={209}
+              height={80}
+            />
+          </div>
+        </Link>
       </StyledCategoriesWrapper>
     </>
   );

@@ -63,9 +63,6 @@ export default function EllipsisList({
                   <Grid container wrap="nowrap" spacing={2}>
                    
                     <Grid justifyContent="left" item xs zeroMinWidth>
-                      <h4 style={{ margin: 0, textAlign: 'left' }}>
-                        {value.user}
-                      </h4>
                       <p style={{ textAlign: 'left' }}>{value.comment}</p>
                       <p style={{ textAlign: 'left', color: 'gray' }}>
                         posted {value.commentTime}

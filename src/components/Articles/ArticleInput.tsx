@@ -27,8 +27,8 @@ const ArticleInput = () => {
     const UserImg = sessionStorage.getItem('imgURL') || '';
     push(ref(DB, '/'), {
       comment: article,
-      user: User,
-      userimg: UserImg,
+   
+    
       commentTime: NOWUTC,
     }).then(() => {
       setArticle('');

@@ -6,8 +6,6 @@ import { useState, useEffect } from 'react';
 
 export type Comment = {
   comment: string;
-  user: string;
-
   commentTime: string;
 };
 export const getStaticProps: GetStaticProps = async () => {

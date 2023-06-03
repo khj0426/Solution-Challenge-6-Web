@@ -61,9 +61,7 @@ export default function EllipsisList({
                   style={{ padding: '40px 20px', marginTop: 10 }}
                 >
                   <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item>
-                      <Avatar alt="Users image profile" src={value.userimg} />
-                    </Grid>
+                   
                     <Grid justifyContent="left" item xs zeroMinWidth>
                       <h4 style={{ margin: 0, textAlign: 'left' }}>
                         {value.user}
